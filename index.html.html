@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DámTo! – Slová a pravopis v3</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(#eaf6ff,#fff6df);color:#183153;min-height:100vh}
+.w{max-width:780px;margin:auto;padding:18px}
+.logo{font-size:34px;font-weight:900}.logo span{color:#ff9f43}.sub{font-weight:700;opacity:.65}
+.card{background:#fff;border-radius:28px;padding:25px;margin-top:22px;box-shadow:0 14px 35px #18315318;text-align:center}
+h1{font-size:40px;margin:8px}.levels,.answers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+button{cursor:pointer}.levels button,.answers button,.go,.next,.smallbtn{border:0;border-radius:18px;padding:17px;font-size:17px;font-weight:800}
+.levels button{background:#eef6ff;color:#183153}.levels .on{outline:3px solid #ff9f43;background:#fff6e9}
+.go{background:#2f80ed;color:#fff;font-size:20px;padding:16px 28px}.smallbtn{background:#eef6ff;color:#183153;padding:11px 15px;font-size:14px}
+.hidden{display:none}.progress{height:12px;background:#e8eef5;border-radius:20px;overflow:hidden}.bar{height:100%;background:#ff9f43}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:10px 0;font-weight:800;flex-wrap:wrap}
+.q{font-size:32px;font-weight:900;margin:28px 0;line-height:1.3}.answers{grid-template-columns:1fr 1fr}
+.answers button{border:2px solid #e1eaf4;background:white;color:#183153;font-size:20px}.fb{padding:15px;border-radius:16px;margin-top:15px;font-weight:700}
+.ok{background:#e9f9f1;color:#16724c}.bad{background:#fff0f2;color:#a72e42}.next{background:#ff9f43;margin-top:15px}
+.score{font-size:48px;font-weight:900}.badge{display:inline-block;padding:8px 13px;border-radius:30px;background:#fff4df;color:#7d5000;font-weight:900;margin:8px}
+.modehelp{font-size:14px;opacity:.7;margin-top:7px}
+@media(max-width:560px){.levels,.answers{grid-template-columns:1fr}h1{font-size:32px}.q{font-size:27px}}
+</style>
+</head>
+<body><div class="w">
+<div class="logo">Dám<span>To!</span></div><div class="sub">Každý deň o level vyššie.</div>
+
+<div id="home" class="card">
+<div style="font-size:58px">🔤✨</div><h1>Slová a pravopis</h1><p><b>Tvrdé a mäkké spoluhlásky</b></p>
+<div class="levels">
+<button class="on" onclick="chooseLevel(1,this)">⭐<br>Skúšam</button>
+<button onclick="chooseLevel(2,this)">⭐⭐<br>Už mi to ide</button>
+<button onclick="chooseLevel(3,this)">⭐⭐⭐<br>DámTo!</button>
+</div>
+<div id="levelHelp" class="modehelp">Skúšam: dopĺňaš správne písmeno.</div>
+<button class="go" onclick="start()">▶ Začať tréning</button><br><br><button class="smallbtn" onclick="startMistakes()">🎯 Moje chyby <span id="mistakeCount"></span></button>
+</div>
+
+<div id="game" class="card hidden">
+<div class="row"><button class="smallbtn" onclick="backToLevels()">← Zmeniť level</button><span id="modeBadge" class="badge"></span></div>
+<div class="progress"><div id="bar" class="bar"></div></div>
+<div class="row"><span id="num"></span><span>🏆 <span id="pts">0</span></span></div>
+<div id="type" style="font-weight:800;color:#2f80ed"></div>
+<div id="q" class="q"></div><div id="answers" class="answers"></div><div id="fb"></div>
+<button id="next" class="next hidden" onclick="nxt()">Ďalej ➜</button>
+</div>
+
+<div id="end" class="card hidden">
+<div style="font-size:64px">🏆</div><h1>Tréning hotový!</h1><div id="score" class="score"></div><p id="msg"></p>
+<button class="go" onclick="start()">🔁 Nový mix</button><br><br><button class="smallbtn" onclick="backToLevels()">⭐ Vybrať iný level</button>
+</div>
+</div>
+
+<script>
+const bank=[
+{id:"ryba",gap:"r_ba",a:"y",opts:["y","i"],word:"ryba",wrong:"riba",sent:["V čistom potoku pláva malá ryba.","Rybár ráno chytil veľkú rybu.","Pod hladinou sa mihla strieborná ryba."]},
+{id:"syr",gap:"s_r",a:"y",opts:["y","i"],word:"syr",wrong:"sir",sent:["Na desiatu som si dal chlieb a syr.","Mama nastrúhala syr na cestoviny.","V chladničke zostal posledný kúsok syra."]},
+{id:"syn",gap:"s_n",a:"y",opts:["y","i"],word:"syn",wrong:"sin",sent:["Ich syn chodí do druhej triedy.","Mladší syn sa hrá na dvore.","Otec čakal na svojho syna pred školou."]},
+{id:"hybat",gap:"h_bať",a:"ý",opts:["ý","í"],word:"hýbať",wrong:"híbať",sent:["Po páde mohol znovu hýbať rukou.","Listy sa začali hýbať vo vetre.","Skús pomaly hýbať prstami."]},
+{id:"chyba",gap:"ch_ba",a:"y",opts:["y","i"],word:"chyba",wrong:"chiba",sent:["V poslednej vete je jedna chyba.","Žiak našiel chybu vo svojom zošite.","Po kontrole si svoju chybu opravil."]},
+{id:"divadlo",gap:"d_vadlo",a:"i",opts:["i","y"],word:"divadlo",wrong:"dyvadlo",sent:["V sobotu pôjdeme do divadla.","Naše divadlo uviedlo novú rozprávku.","Pred divadlom čakalo veľa detí."]},
+{id:"ticho",gap:"t_cho",a:"i",opts:["i","y"],word:"ticho",wrong:"tycho",sent:["Po zazvonení bolo v triede ticho.","V lese zavládlo úplné ticho.","Prosím, chvíľu buď ticho."]},
+{id:"list",gap:"l_st",a:"i",opts:["i","y"],word:"list",wrong:"lyst",sent:["Zo stromu spadol žltý list.","Na chodníku ležal veľký list.","Vietor odniesol suchý list."]},
+{id:"nikto",gap:"n_kto",a:"i",opts:["i","y"],word:"nikto",wrong:"nykto",sent:["Nikto nechcel zmeškať výlet.","V triede dnes nikto nechýbal.","Nikto nepoznal správnu odpoveď."]},
+{id:"sip",gap:"š_p",a:"í",opts:["í","ý"],word:"šíp",wrong:"šýp",sent:["Šíp trafil presne do terča.","Lukostrelec vystrelil prvý šíp.","Na zemi našiel zlomený šíp."]},
+{id:"cislo",gap:"č_slo",a:"í",opts:["í","ý"],word:"číslo",wrong:"čýslo",sent:["Napíš na tabuľu správne číslo.","Každý dom má svoje číslo.","Vybral si číslo desať."]},
+{id:"zirafa",gap:"ž_rafa",a:"i",opts:["i","y"],word:"žirafa",wrong:"žyrafa",sent:["Žirafa má veľmi dlhý krk.","V zoo sme pozorovali mladú žirafu.","Žirafa sa načiahla za listami."]},
+{id:"cibula",gap:"c_buľa",a:"i",opts:["i","y"],word:"cibuľa",wrong:"cybuľa",sent:["Mama nakrájala cibuľu do polievky.","Na stole ležala veľká cibuľa.","Cibuľa má výraznú vôňu."]},
+{id:"divoky",gap:"d_voký",a:"i",opts:["i","y"],word:"divoký",wrong:"dyvoký",sent:["V lese žije divoký kanec.","Pri ceste rástol divoký mak.","Pes sa zľakol divokého zvieraťa."]},
+{id:"tichy",gap:"t_chý",a:"i",opts:["i","y"],word:"tichý",wrong:"tychý",sent:["Chlapec bol počas čítania tichý.","Večer bol dom nezvyčajne tichý.","Tichý hlas bolo sotva počuť."]},
+{id:"siroky",gap:"š_roký",a:"i",opts:["i","y"],word:"široký",wrong:"šyroký",sent:["Cez rieku vedie široký most.","Na stole ležal široký papier.","Chodník bol dostatočne široký."]},
+{id:"citat",gap:"č_tať",a:"í",opts:["í","ý"],word:"čítať",wrong:"čýtať",sent:["Večer si budem čítať rozprávku.","Deti sa učia plynulo čítať.","Najradšej chodí čítať do knižnice."]},
+{id:"zima",gap:"z_ma",a:"i",opts:["i","y"],word:"zima",wrong:"zyma",sent:["Ráno bola poriadna zima.","Táto zima priniesla veľa snehu.","Keď prišla zima, rybník zamrzol."]}
+];
+
+let level=1,deck=[],i=0,p=0,lock=false,usedSentences={};
+
+function chooseLevel(n,b){
+ level=n;document.querySelectorAll(".levels button").forEach(x=>x.classList.remove("on"));b.classList.add("on");
+ levelHelp.textContent={1:"Skúšam: dopĺňaš správne písmeno.",2:"Už mi to ide: vyberáš správne celé slovo.",3:"DámTo!: hľadáš správne napísanú vetu."}[n];
+}
+function sh(a){return [...a].sort(()=>Math.random()-.5)}
+function view(x){["home","game","end"].forEach(v=>document.getElementById(v).classList.toggle("hidden",v!==x))}
+function backToLevels(){updateMistakeCount();view("home")}
+function getMistakes(){return JSON.parse(localStorage.getItem("damto_mistakes")||"{}")}
+function saveMistakes(m){localStorage.setItem("damto_mistakes",JSON.stringify(m));updateMistakeCount()}
+function updateMistakeCount(){
+ let m=getMistakes(), n=Object.keys(m).length, el=document.getElementById("mistakeCount");
+ if(el) el.textContent=n?`(${n})`:"";
+}
+function markMistake(id){
+ let m=getMistakes(); m[id]=Math.max(2,(m[id]||0)+1); saveMistakes(m);
+}
+function markCorrect(id){
+ let m=getMistakes();
+ if(m[id]){
+   m[id]--;
+   if(m[id]<=0) delete m[id];
+   saveMistakes(m);
+ }
+}
+function chooseSentence(item){
+ let seen=JSON.parse(localStorage.getItem("damto_seen_sentences")||"[]");
+ let available=item.sent.filter(s=>!seen.includes(s));
+ if(!available.length) available=item.sent;
+ let s=sh(available)[0];
+ seen.push(s);
+ if(seen.length>40) seen=seen.slice(-40);
+ localStorage.setItem("damto_seen_sentences",JSON.stringify(seen));
+ return s;
+}
+function start(){
+ let mistakes=getMistakes();
+ let weak=bank.filter(x=>mistakes[x.id]).sort((a,b)=>(mistakes[b.id]||0)-(mistakes[a.id]||0));
+ let fresh=sh(bank.filter(x=>!mistakes[x.id]));
+ let chosen=[...sh(weak).slice(0,4),...fresh].slice(0,10);
+ if(chosen.length<10) chosen=[...chosen,...sh(bank.filter(x=>!chosen.some(y=>y.id===x.id)))].slice(0,10);
+ deck=sh(chosen).map(x=>({...x,chosenSentence:chooseSentence(x)}));
+ i=0;p=0;lock=false;view("game");render();
+}
+function startMistakes(){
+ let mistakes=getMistakes();
+ let weak=bank.filter(x=>mistakes[x.id]).sort((a,b)=>(mistakes[b.id]||0)-(mistakes[a.id]||0));
+ if(!weak.length){alert("Zatiaľ tu nemáš žiadne chyby. 🎉");return;}
+ deck=weak.slice(0,10).map(x=>({...x,chosenSentence:chooseSentence(x)}));
+ i=0;p=0;lock=false;view("game");render();
+}
+function render(){
+ lock=false;let x=deck[i];num.textContent=`${i+1} / ${deck.length}`;pts.textContent=p;bar.style.width=`${i/deck.length*100}%`;
+ fb.className="";fb.textContent="";next.classList.add("hidden");
+ modeBadge.textContent={1:"⭐ Skúšam",2:"⭐⭐ Už mi to ide",3:"⭐⭐⭐ DámTo!"}[level];
+ if(level===1){
+   type.textContent="✏️ Doplň správne písmeno";q.textContent=x.gap;
+   answers.innerHTML=sh(x.opts).map(v=>`<button onclick="ans(${JSON.stringify(v===x.a)})">${v}</button>`).join("");
+ }else if(level===2){
+   type.textContent="🧩 Vyber správne napísané slovo";q.textContent="Ktoré slovo je správne?";
+   answers.innerHTML=sh([x.word,x.wrong]).map(v=>`<button onclick="ans(${JSON.stringify(v===x.word)})">${v}</button>`).join("");
+ }else{
+   type.textContent="🔎 Lovec chýb";q.textContent="Ktorá veta je napísaná správne?";
+   let good=x.chosenSentence, bad=good.replace(x.word,x.wrong);
+   answers.innerHTML=sh([good,bad]).map(v=>`<button onclick="ans(${JSON.stringify(v===good)})">${v}</button>`).join("");
+ }
+}
+function ans(ok){
+ if(lock)return;lock=true;let x=deck[i];
+ if(ok){
+   p++; markCorrect(x.id);
+   fb.className="fb ok";
+   fb.innerHTML="🎉 <b>Super!</b> Správna odpoveď.";
+ } else {
+   markMistake(x.id);
+   fb.className="fb bad";
+   fb.innerHTML=`💡 <b>Ešte nie.</b> Správne je <b>${x.word}</b>.<br>🎯 Túto chybu si DámTo! zapamätá a v ďalšom tréningu sa k nej vráti.`;
+ }
+ pts.textContent=p;document.querySelectorAll("#answers button").forEach(z=>z.disabled=true);next.classList.remove("hidden");
+}
+function nxt(){i++;i>=deck.length?finish():render()}
+function finish(){view("end");score.textContent=`${p} / ${deck.length}`;msg.innerHTML=p>=8?"<b>DámTo!</b> Výborne!":p>=6?"🌟 Pekne! Ešte trocha tréningu.":"💪 Nový mix ti pomôže posunúť sa vyššie."}
+updateMistakeCount();
+</script></body></html>
