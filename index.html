@@ -697,7 +697,7 @@ const database = [
 
 
 
-/* KONTROLA DATABÁZY */
+/* Bezpečnostná kontrola databázy */
 const forbiddenWords = new Set(["činel","žiaci","svietiť","variť","hasiť","taniere"]);
 const forbiddenDiphthongs = ["ia","ie","iu","ô"];
 
@@ -709,7 +709,7 @@ function isSafeDatabaseItem(item){
 
 for(let i=database.length-1;i>=0;i--){
   if(!isSafeDatabaseItem(database[i])){
-    console.warn("DámTo!: vyradené nevhodné slovo:",database[i].word);
+    console.warn("DámTo!: automaticky vyradené slovo:",database[i].word);
     database.splice(i,1);
   }
 }
