@@ -7,7 +7,9 @@
 <title>DámTo! – Slová a pravopis</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -20,12 +22,12 @@ body{
 .wrap{
   max-width:760px;
   margin:auto;
-  padding:24px 18px 50px;
+  padding:16px 18px 30px;
 }
 
 .brand{
   text-align:center;
-  margin-bottom:20px;
+  margin-bottom:14px;
 }
 
 .logo{
@@ -34,7 +36,9 @@ body{
   letter-spacing:-2px;
 }
 
-.logo span{color:#ff9f1c}
+.logo span{
+  color:#ff9f1c;
+}
 
 .slogan{
   color:#65758b;
@@ -45,16 +49,20 @@ body{
 .card{
   background:#fff;
   border-radius:30px;
-  padding:30px;
+  padding:26px 30px;
   box-shadow:0 15px 40px rgba(23,54,93,.12);
 }
 
-.center{text-align:center}
+.center{
+  text-align:center;
+}
 
-.icon{font-size:60px}
+.icon{
+  font-size:54px;
+}
 
 h1{
-  margin:10px 0;
+  margin:8px 0;
   font-size:34px;
 }
 
@@ -71,14 +79,14 @@ h1{
 
 .levels{
   display:grid;
-  gap:12px;
-  margin:25px 0;
+  gap:10px;
+  margin:20px 0;
 }
 
 button{
   border:0;
   border-radius:18px;
-  padding:16px;
+  padding:14px;
   font-size:17px;
   font-weight:800;
   cursor:pointer;
@@ -113,12 +121,14 @@ button:hover{
 
 .mistakes{
   width:100%;
-  margin-top:12px;
+  margin-top:10px;
   background:#fff4df;
   color:#805400;
 }
 
-.hidden{display:none}
+.hidden{
+  display:none;
+}
 
 .top{
   display:flex;
@@ -140,7 +150,7 @@ button:hover{
   background:#e9eff5;
   border-radius:20px;
   overflow:hidden;
-  margin:20px 0 12px;
+  margin:14px 0 10px;
 }
 
 .bar{
@@ -158,7 +168,7 @@ button:hover{
 }
 
 .instruction{
-  margin-top:30px;
+  margin-top:20px;
   color:#65758b;
   font-weight:700;
 }
@@ -166,19 +176,20 @@ button:hover{
 .question{
   font-size:38px;
   font-weight:900;
-  margin:22px 0 25px;
+  margin:18px 0 20px;
   text-align:center;
 }
 
 .answers{
   display:grid;
-  gap:12px;
+  gap:10px;
 }
 
 .answer{
   background:white;
   border:2px solid #dce7f2;
   color:#17365d;
+  min-height:58px;
 }
 
 .answer:hover{
@@ -191,8 +202,8 @@ button:hover{
 }
 
 .feedback{
-  margin-top:20px;
-  padding:16px;
+  margin-top:14px;
+  padding:14px;
   border-radius:17px;
   line-height:1.5;
 }
@@ -208,7 +219,7 @@ button:hover{
 }
 
 .next{
-  margin-top:16px;
+  margin-top:12px;
 }
 
 .score{
@@ -221,14 +232,90 @@ button:hover{
   text-align:center;
   color:#8795a7;
   font-size:13px;
-  margin-top:20px;
+  margin-top:14px;
 }
 
+/* menší notebook */
+@media(max-height:800px) and (min-width:521px){
+  .wrap{
+    padding-top:8px;
+    padding-bottom:16px;
+  }
+
+  .brand{
+    margin-bottom:8px;
+  }
+
+  .logo{
+    font-size:38px;
+  }
+
+  .slogan{
+    font-size:14px;
+  }
+
+  .card{
+    padding:20px 26px;
+  }
+
+  .instruction{
+    margin-top:14px;
+  }
+
+  .question{
+    margin:14px 0 16px;
+    font-size:34px;
+  }
+
+  .answer{
+    min-height:52px;
+    padding:12px;
+  }
+
+  .progress{
+    margin:12px 0 8px;
+  }
+
+  .feedback{
+    margin-top:10px;
+    padding:12px;
+  }
+
+  .next{
+    margin-top:10px;
+  }
+}
+
+/* mobil */
 @media(max-width:520px){
-  .card{padding:22px 17px}
-  h1{font-size:29px}
-  .question{font-size:31px}
-  .logo{font-size:40px}
+  .wrap{
+    padding:12px 10px 25px;
+  }
+
+  .card{
+    padding:20px 15px;
+    border-radius:24px;
+  }
+
+  h1{
+    font-size:29px;
+  }
+
+  .question{
+    font-size:29px;
+  }
+
+  .logo{
+    font-size:40px;
+  }
+
+  .icon{
+    font-size:48px;
+  }
+
+  button{
+    padding:13px;
+  }
 }
 </style>
 </head>
@@ -241,6 +328,7 @@ button:hover{
     <div class="logo">Dám<span>To!</span></div>
     <div class="slogan">Každý deň o level vyššie.</div>
   </div>
+
 
   <!-- DOMOV -->
   <section id="home" class="card center">
@@ -322,9 +410,10 @@ button:hover{
 
     <div id="feedback"></div>
 
-    <button id="nextButton"
-            class="primary next hidden"
-            onclick="nextQuestion()">
+    <button
+      id="nextButton"
+      class="primary next hidden"
+      onclick="nextQuestion()">
       Ďalej ➜
     </button>
 
@@ -363,174 +452,174 @@ button:hover{
 
 <script>
 
-/*
-  PRVÁ TESTOVACIA DATABÁZA
-
-  Toto je technický základ aplikácie.
-  Databázu budeme následne rozširovať
-  podľa učiva, ktoré dodáš.
-*/
+/* =====================================================
+   DATABÁZA
+   ===================================================== */
 
 const database = [
 
 {
- id:"sikovny",
- word:"šikovný",
- wrong:"šykovný",
- gap:"š_kovný",
- correct:"i",
- sentences:[
-  "Miško je veľmi šikovný.",
-  "Šikovný žiak úlohu vyriešil.",
-  "Náš spolužiak je šikovný."
- ]
+  id:"sikovny",
+  word:"šikovný",
+  wrong:"šykovný",
+  gap:"š_kovný",
+  correct:"i",
+  sentences:[
+    "Miško je veľmi šikovný.",
+    "Šikovný žiak úlohu vyriešil.",
+    "Náš spolužiak je šikovný."
+  ]
 },
 
 {
- id:"siska",
- word:"šiška",
- wrong:"šyška",
- gap:"š_ška",
- correct:"i",
- sentences:[
-  "Pod stromom ležala šiška.",
-  "Veverička našla šišku.",
-  "Zo stromu spadla šiška."
- ]
+  id:"siska",
+  word:"šiška",
+  wrong:"šyška",
+  gap:"š_ška",
+  correct:"i",
+  sentences:[
+    "Pod stromom ležala šiška.",
+    "Veverička našla šišku.",
+    "Zo stromu spadla šiška."
+  ]
 },
 
 {
- id:"zirafa",
- word:"žirafa",
- wrong:"žyrafa",
- gap:"ž_rafa",
- correct:"i",
- sentences:[
-  "Žirafa má dlhý krk.",
-  "V zoo sme videli žirafu.",
-  "Žirafa jedla zelené listy."
- ]
+  id:"zirafa",
+  word:"žirafa",
+  wrong:"žyrafa",
+  gap:"ž_rafa",
+  correct:"i",
+  sentences:[
+    "Žirafa má dlhý krk.",
+    "V zoo sme videli žirafu.",
+    "Žirafa jedla zelené listy."
+  ]
 },
 
 {
- id:"ziak",
- word:"žiak",
- wrong:"žyak",
- gap:"ž_ak",
- correct:"i",
- sentences:[
-  "Žiak sedel v prvej lavici.",
-  "Každý žiak dostal zošit.",
-  "Žiak správne odpovedal."
- ]
+  id:"ziak",
+  word:"žiak",
+  wrong:"žyak",
+  gap:"ž_ak",
+  correct:"i",
+  sentences:[
+    "Žiak sedel v prvej lavici.",
+    "Každý žiak dostal zošit.",
+    "Žiak správne odpovedal."
+  ]
 },
 
 {
- id:"cibula",
- word:"cibuľa",
- wrong:"cybuľa",
- gap:"c_buľa",
- correct:"i",
- sentences:[
-  "Mama nakrájala cibuľu.",
-  "Na stole ležala cibuľa.",
-  "Cibuľa má výraznú vôňu."
- ]
+  id:"cibula",
+  word:"cibuľa",
+  wrong:"cybuľa",
+  gap:"c_buľa",
+  correct:"i",
+  sentences:[
+    "Mama nakrájala cibuľu.",
+    "Na stole ležala cibuľa.",
+    "Cibuľa má výraznú vôňu."
+  ]
 },
 
 {
- id:"citron",
- word:"citrón",
- wrong:"cytrón",
- gap:"c_trón",
- correct:"i",
- sentences:[
-  "Do čaju som dal citrón.",
-  "Citrón chutí kyslo.",
-  "Na stole bol žltý citrón."
- ]
+  id:"citron",
+  word:"citrón",
+  wrong:"cytrón",
+  gap:"c_trón",
+  correct:"i",
+  sentences:[
+    "Do čaju som dal citrón.",
+    "Citrón chutí kyslo.",
+    "Na stole bol žltý citrón."
+  ]
 },
 
 {
- id:"divadlo",
- word:"divadlo",
- wrong:"dyvadlo",
- gap:"d_vadlo",
- correct:"i",
- sentences:[
-  "V sobotu pôjdeme do divadla.",
-  "Divadlo uviedlo novú rozprávku.",
-  "Pred divadlom čakali deti."
- ]
+  id:"divadlo",
+  word:"divadlo",
+  wrong:"dyvadlo",
+  gap:"d_vadlo",
+  correct:"i",
+  sentences:[
+    "V sobotu pôjdeme do divadla.",
+    "Divadlo uviedlo novú rozprávku.",
+    "Pred divadlom čakali deti."
+  ]
 },
 
 {
- id:"ticho",
- word:"ticho",
- wrong:"tycho",
- gap:"t_cho",
- correct:"i",
- sentences:[
-  "V triede bolo ticho.",
-  "V lese zavládlo ticho.",
-  "Prosím, buď chvíľu ticho."
- ]
+  id:"ticho",
+  word:"ticho",
+  wrong:"tycho",
+  gap:"t_cho",
+  correct:"i",
+  sentences:[
+    "V triede bolo ticho.",
+    "V lese zavládlo ticho.",
+    "Prosím, buď chvíľu ticho."
+  ]
 },
 
 {
- id:"nitka",
- word:"nitka",
- wrong:"nytka",
- gap:"n_tka",
- correct:"i",
- sentences:[
-  "Na stole ležala nitka.",
-  "Nitka sa pretrhla.",
-  "Navliekla nitku do ihly."
- ]
+  id:"nitka",
+  word:"nitka",
+  wrong:"nytka",
+  gap:"n_tka",
+  correct:"i",
+  sentences:[
+    "Na stole ležala nitka.",
+    "Nitka sa pretrhla.",
+    "Navliekla nitku do ihly."
+  ]
 },
 
 {
- id:"nikto",
- word:"nikto",
- wrong:"nykto",
- gap:"n_kto",
- correct:"i",
- sentences:[
-  "Nikto dnes nechýbal.",
-  "Nikto nepoznal odpoveď.",
-  "Nikto nechcel odísť."
- ]
+  id:"nikto",
+  word:"nikto",
+  wrong:"nykto",
+  gap:"n_kto",
+  correct:"i",
+  sentences:[
+    "Nikto dnes nechýbal.",
+    "Nikto nepoznal odpoveď.",
+    "Nikto nechcel odísť."
+  ]
 },
 
 {
- id:"lipa",
- word:"lipa",
- wrong:"lypa",
- gap:"l_pa",
- correct:"i",
- sentences:[
-  "Pred domom rastie lipa.",
-  "Lipa krásne kvitne.",
-  "Pod lipou sme oddychovali."
- ]
+  id:"lipa",
+  word:"lipa",
+  wrong:"lypa",
+  gap:"l_pa",
+  correct:"i",
+  sentences:[
+    "Pred domom rastie lipa.",
+    "Lipa krásne kvitne.",
+    "Pod lipou sme oddychovali."
+  ]
 },
 
 {
- id:"list",
- word:"list",
- wrong:"lyst",
- gap:"l_st",
- correct:"i",
- sentences:[
-  "Zo stromu spadol list.",
-  "Na zemi ležal žltý list.",
-  "Vietor odniesol suchý list."
- ]
+  id:"list",
+  word:"list",
+  wrong:"lyst",
+  gap:"l_st",
+  correct:"i",
+  sentences:[
+    "Zo stromu spadol list.",
+    "Na zemi ležal žltý list.",
+    "Vietor odniesol suchý list."
+  ]
 }
 
 ];
 
+
+/* =====================================================
+   PREMENNÉ
+   ===================================================== */
 
 let selectedLevel = 1;
 let questions = [];
@@ -539,6 +628,18 @@ let score = 0;
 let locked = false;
 let mistakesOnly = false;
 
+/*
+  Sem si počas jedného tréningu zapisujeme
+  už použité vety.
+
+  Tým zabránime opakovaniu tej istej vety.
+*/
+let usedSentences = new Set();
+
+
+/* =====================================================
+   POMOCNÉ FUNKCIE
+   ===================================================== */
 
 function shuffle(array){
 
@@ -556,6 +657,250 @@ function shuffle(array){
 }
 
 
+/*
+  Zjednotenie textu pre kontrolu duplicít.
+
+  Rozdiel vo veľkom/malom písmene alebo
+  nadbytočných medzerách sa nebude považovať
+  za inú vetu.
+*/
+function normalizeText(text){
+
+  return String(text)
+    .trim()
+    .replace(/\s+/g," ")
+    .toLocaleLowerCase("sk");
+
+}
+
+
+/*
+  Zistí pozíciu písmena, v ktorom sa správne
+  a nesprávne slovo líšia.
+
+  napríklad:
+
+  žirafa
+  žyrafa
+
+  rozdiel je na pozícii 1
+*/
+function getDifference(item){
+
+  const good=item.word;
+  const bad=item.wrong;
+
+  const length=Math.min(good.length,bad.length);
+
+  for(let i=0;i<length;i++){
+
+    if(
+      good[i].toLocaleLowerCase("sk") !==
+      bad[i].toLocaleLowerCase("sk")
+    ){
+
+      return {
+        index:i,
+        correctChar:good[i],
+        wrongChar:bad[i]
+      };
+
+    }
+
+  }
+
+  return null;
+}
+
+
+/*
+  VYTVORENIE CHYBNEJ VETY
+
+  Toto je hlavná oprava problému.
+
+  Pôvodný kód hľadal napríklad presne
+  slovo "žirafa".
+
+  Preto vo vete:
+
+  "V zoo sme videli žirafu."
+
+  nič nenašiel.
+
+  Nový kód nehľadá celé slovo.
+  Nájde charakteristickú časť slova a zmení
+  iba konkrétne i/y.
+
+  Preto fungujú aj tvary:
+
+  žirafa
+  žirafu
+
+  lipa
+  lipou
+
+  cibuľa
+  cibuľu
+*/
+function makeWrongSentence(sentence,item){
+
+  const difference=getDifference(item);
+
+  if(!difference){
+    return null;
+  }
+
+  const index=difference.index;
+
+  /*
+    Vezmeme časť správneho slova okolo
+    problematického písmena.
+
+    Napríklad:
+    žirafa -> "žira"
+    cibuľa -> "cibu"
+  */
+
+  const anchorEnd=Math.min(
+    item.word.length,
+    index+3
+  );
+
+  const anchor=item.word.slice(0,anchorEnd);
+
+  const lowerSentence=
+    sentence.toLocaleLowerCase("sk");
+
+  const lowerAnchor=
+    anchor.toLocaleLowerCase("sk");
+
+  let position=
+    lowerSentence.indexOf(lowerAnchor);
+
+
+  /*
+    Ak dlhšiu časť nenájdeme,
+    skúsime kratší začiatok slova.
+  */
+
+  if(position===-1){
+
+    const shortAnchor=
+      item.word.slice(0,index+1);
+
+    position=
+      lowerSentence.indexOf(
+        shortAnchor.toLocaleLowerCase("sk")
+      );
+
+  }
+
+
+  if(position===-1){
+    return null;
+  }
+
+
+  const letterPosition=
+    position+index;
+
+  const originalLetter=
+    sentence[letterPosition];
+
+  let replacement=
+    difference.wrongChar;
+
+
+  /*
+    Zachovanie veľkého písmena.
+  */
+
+  if(
+    originalLetter ===
+    originalLetter.toLocaleUpperCase("sk")
+  ){
+
+    replacement=
+      replacement.toLocaleUpperCase("sk");
+
+  }
+
+
+  const result=
+    sentence.slice(0,letterPosition)+
+    replacement+
+    sentence.slice(letterPosition+1);
+
+
+  /*
+    ABSOLÚTNA POISTKA:
+
+    Ak sa veta nezmenila, nepoužijeme ju.
+  */
+
+  if(
+    normalizeText(result)===
+    normalizeText(sentence)
+  ){
+    return null;
+  }
+
+
+  return result;
+}
+
+
+/*
+  Vyberie vetu, ktorá ešte počas tohto
+  tréningu nebola použitá.
+
+  Zároveň kontroluje, že sa z nej naozaj
+  podarí vytvoriť chybná verzia.
+*/
+function getUniqueSentence(item){
+
+  const candidates=
+    shuffle(item.sentences);
+
+  for(const sentence of candidates){
+
+    const key=normalizeText(sentence);
+
+    if(usedSentences.has(key)){
+      continue;
+    }
+
+    const bad=
+      makeWrongSentence(sentence,item);
+
+    if(!bad){
+      continue;
+    }
+
+    if(
+      normalizeText(sentence)===
+      normalizeText(bad)
+    ){
+      continue;
+    }
+
+    usedSentences.add(key);
+
+    return {
+      good:sentence,
+      bad:bad
+    };
+
+  }
+
+  return null;
+}
+
+
+/* =====================================================
+   LEVELY A OBRAZOVKY
+   ===================================================== */
+
 function chooseLevel(level,button){
 
   selectedLevel=level;
@@ -571,23 +916,37 @@ function chooseLevel(level,button){
 function show(section){
 
   ["home","game","finish"].forEach(id=>{
-    document.getElementById(id).classList.add("hidden");
+
+    document
+      .getElementById(id)
+      .classList.add("hidden");
+
   });
 
-  document.getElementById(section).classList.remove("hidden");
+  document
+    .getElementById(section)
+    .classList.remove("hidden");
 
 }
 
 
+/* =====================================================
+   UKLADANIE CHÝB
+   ===================================================== */
+
 function getMistakes(){
 
   try{
+
     return JSON.parse(
       localStorage.getItem("damtoMistakes") || "{}"
     );
+
   }
   catch{
+
     return {};
+
   }
 
 }
@@ -629,6 +988,7 @@ function registerCorrect(id){
     }
 
     saveMistakes(data);
+
   }
 
 }
@@ -636,34 +996,46 @@ function registerCorrect(id){
 
 function updateMistakeCounter(){
 
-  const total=Object.keys(getMistakes()).length;
+  const total=
+    Object.keys(getMistakes()).length;
 
-  document.getElementById("mistakeCount").textContent =
-    total ? " ("+total+")" : "";
+  document
+    .getElementById("mistakeCount")
+    .textContent =
+      total ? " ("+total+")" : "";
 
 }
 
+
+/* =====================================================
+   TVORBA TRÉNINGU
+   ===================================================== */
 
 function buildNormalDeck(){
 
   const mistakes=getMistakes();
 
-  const difficult=database.filter(
-    item=>mistakes[item.id]
-  );
+  const difficult=
+    database.filter(
+      item=>mistakes[item.id]
+    );
 
-  const others=database.filter(
-    item=>!mistakes[item.id]
-  );
+  const others=
+    database.filter(
+      item=>!mistakes[item.id]
+    );
 
-  let deck=[
+  /*
+    Každé slovo je v databáze iba raz.
+
+    Preto sa v jednom tréningu
+    to isté slovo nezopakuje.
+  */
+
+  const deck=[
     ...shuffle(difficult),
     ...shuffle(others)
   ];
-
-  /*
-    maximálne 10 rôznych slov v jednom tréningu
-  */
 
   return deck.slice(0,10);
 
@@ -673,6 +1045,13 @@ function buildNormalDeck(){
 function startTraining(){
 
   mistakesOnly=false;
+
+  /*
+    Nový tréning = čistý zoznam
+    použitých viet.
+  */
+
+  usedSentences=new Set();
 
   questions=buildNormalDeck();
 
@@ -690,9 +1069,10 @@ function startMistakes(){
 
   const stored=getMistakes();
 
-  const wrongWords=database.filter(
-    item=>stored[item.id]
-  );
+  const wrongWords=
+    database.filter(
+      item=>stored[item.id]
+    );
 
   if(wrongWords.length===0){
 
@@ -701,11 +1081,15 @@ function startMistakes(){
     );
 
     return;
+
   }
 
   mistakesOnly=true;
 
-  questions=shuffle(wrongWords).slice(0,10);
+  usedSentences=new Set();
+
+  questions=
+    shuffle(wrongWords).slice(0,10);
 
   current=0;
   score=0;
@@ -726,104 +1110,197 @@ function goHome(){
 }
 
 
+/* =====================================================
+   ZOBRAZENIE OTÁZKY
+   ===================================================== */
+
 function renderQuestion(){
 
   locked=false;
 
   const item=questions[current];
 
-  document.getElementById("counter").textContent =
-    (current+1)+" / "+questions.length;
+  if(!item){
+    finishTraining();
+    return;
+  }
 
-  document.getElementById("points").textContent =
-    score;
 
-  document.getElementById("progressBar").style.width =
-    (current/questions.length*100)+"%";
+  document
+    .getElementById("counter")
+    .textContent =
+      (current+1)+" / "+questions.length;
 
-  document.getElementById("levelBadge").textContent =
-    {
-      1:"⭐ Skúšam",
-      2:"⭐⭐ Už mi to ide",
-      3:"⭐⭐⭐ DámTo!"
-    }[selectedLevel];
 
-  const feedback=document.getElementById("feedback");
+  document
+    .getElementById("points")
+    .textContent =
+      score;
+
+
+  document
+    .getElementById("progressBar")
+    .style.width =
+      (current/questions.length*100)+"%";
+
+
+  document
+    .getElementById("levelBadge")
+    .textContent =
+      {
+        1:"⭐ Skúšam",
+        2:"⭐⭐ Už mi to ide",
+        3:"⭐⭐⭐ DámTo!"
+      }[selectedLevel];
+
+
+  const feedback=
+    document.getElementById("feedback");
 
   feedback.className="";
   feedback.innerHTML="";
 
-  document.getElementById("nextButton")
+
+  document
+    .getElementById("nextButton")
     .classList.add("hidden");
 
 
+  /* LEVEL 1 */
+
   if(selectedLevel===1){
 
-    document.getElementById("instruction").textContent =
-      "✏️ Doplň správne písmeno";
+    document
+      .getElementById("instruction")
+      .textContent =
+        "✏️ Doplň správne písmeno";
 
-    document.getElementById("question").textContent =
-      item.gap;
+
+    document
+      .getElementById("question")
+      .textContent =
+        item.gap;
+
 
     let wrongLetter;
 
-    if(item.correct==="i") wrongLetter="y";
-    else if(item.correct==="í") wrongLetter="ý";
-    else if(item.correct==="y") wrongLetter="i";
-    else wrongLetter="í";
+    if(item.correct==="i"){
+      wrongLetter="y";
+    }
+    else if(item.correct==="í"){
+      wrongLetter="ý";
+    }
+    else if(item.correct==="y"){
+      wrongLetter="i";
+    }
+    else{
+      wrongLetter="í";
+    }
+
 
     createAnswers(
       [item.correct,wrongLetter],
       item.correct
     );
 
+    return;
+
   }
 
 
+  /* LEVEL 2 */
+
   if(selectedLevel===2){
 
-    document.getElementById("instruction").textContent =
-      "🧩 Vyber správne napísané slovo";
+    document
+      .getElementById("instruction")
+      .textContent =
+        "🧩 Vyber správne napísané slovo";
 
-    document.getElementById("question").textContent =
-      "Ktoré slovo je správne?";
+
+    document
+      .getElementById("question")
+      .textContent =
+        "Ktoré slovo je správne?";
+
 
     createAnswers(
       [item.word,item.wrong],
       item.word
     );
 
+    return;
+
   }
 
 
+  /* LEVEL 3 – LOVEC CHÝB */
+
   if(selectedLevel===3){
 
-    document.getElementById("instruction").textContent =
-      "🔎 Lovec chýb";
+    document
+      .getElementById("instruction")
+      .textContent =
+        "🔎 Lovec chýb";
 
-    document.getElementById("question").textContent =
-      "Ktorá veta je napísaná správne?";
 
-    const good=
-      shuffle(item.sentences)[0];
+    document
+      .getElementById("question")
+      .textContent =
+        "Ktorá veta je napísaná správne?";
+
+
+    const pair=
+      getUniqueSentence(item);
+
 
     /*
-      vytvoríme nesprávnu vetu
-      nahradením správneho slova
+      Ak by sa pri niektorom budúcom slove
+      nepodarilo vytvoriť bezpečnú dvojicu,
+      otázku preskočíme.
+
+      Nikdy teda nezobrazíme dve
+      rovnaké možnosti.
     */
 
-    const bad=
-      good.replace(item.word,item.wrong);
+    if(!pair){
+
+      console.warn(
+        "DámTo!: nemožno vytvoriť rozdielnu vetu pre",
+        item.id
+      );
+
+      current++;
+
+      if(current>=questions.length){
+
+        finishTraining();
+
+      }
+      else{
+
+        renderQuestion();
+
+      }
+
+      return;
+
+    }
+
 
     createAnswers(
-      [good,bad],
-      good
+      [pair.good,pair.bad],
+      pair.good
     );
 
   }
 
 }
 
+
+/* =====================================================
+   ODPOVEDE
+   ===================================================== */
 
 function createAnswers(options,correct){
 
@@ -832,33 +1309,101 @@ function createAnswers(options,correct){
 
   container.innerHTML="";
 
-  shuffle(options).forEach(option=>{
 
-    const button=
-      document.createElement("button");
+  /*
+    Odstránenie prípadných duplicít.
+  */
 
-    button.className="answer";
+  const uniqueOptions=[];
 
-    button.textContent=option;
+  for(const option of options){
 
-    button.onclick=()=>checkAnswer(
-      option===correct
+    const exists=
+      uniqueOptions.some(
+        existing=>
+          normalizeText(existing)===
+          normalizeText(option)
+      );
+
+    if(!exists){
+      uniqueOptions.push(option);
+    }
+
+  }
+
+
+  /*
+    ĎALŠIA POISTKA:
+
+    Otázka musí mať minimálne dve
+    rozdielne odpovede.
+  */
+
+  if(uniqueOptions.length<2){
+
+    console.error(
+      "DámTo!: zablokované rovnaké odpovede.",
+      options
     );
 
-    container.appendChild(button);
+    current++;
 
-  });
+    if(current>=questions.length){
+
+      finishTraining();
+
+    }
+    else{
+
+      renderQuestion();
+
+    }
+
+    return;
+
+  }
+
+
+  shuffle(uniqueOptions)
+    .forEach(option=>{
+
+      const button=
+        document.createElement("button");
+
+      button.className="answer";
+
+      button.textContent=option;
+
+      button.onclick=()=>{
+
+        checkAnswer(
+          normalizeText(option)===
+          normalizeText(correct)
+        );
+
+      };
+
+      container.appendChild(button);
+
+    });
 
 }
 
 
+/* =====================================================
+   VYHODNOTENIE
+   ===================================================== */
+
 function checkAnswer(correct){
 
-  if(locked) return;
+  if(locked){
+    return;
+  }
 
   locked=true;
 
-  const item=questions[current];
+  const item=
+    questions[current];
 
   const feedback=
     document.getElementById("feedback");
@@ -870,38 +1415,52 @@ function checkAnswer(correct){
 
     registerCorrect(item.id);
 
-    feedback.className="feedback good";
+    feedback.className=
+      "feedback good";
 
     feedback.innerHTML=
       "🎉 <b>Výborne!</b> Správna odpoveď.";
 
   }
-
   else{
 
     registerMistake(item.id);
 
-    feedback.className="feedback bad";
+    feedback.className=
+      "feedback bad";
 
     feedback.innerHTML=
       "💡 <b>Ešte nie.</b> Správne je <b>"+
       item.word+
-      "</b>.<br>🎯 Toto slovo si DámTo! zapamätá na ďalšie precvičovanie.";
+      "</b>.<br>"+
+      "🎯 Toto slovo si DámTo! zapamätá na ďalšie precvičovanie.";
 
   }
 
 
-  document.getElementById("points").textContent =
-    score;
+  document
+    .getElementById("points")
+    .textContent =
+      score;
 
-  document.querySelectorAll(".answer")
-    .forEach(button=>button.disabled=true);
 
-  document.getElementById("nextButton")
+  document
+    .querySelectorAll(".answer")
+    .forEach(
+      button=>button.disabled=true
+    );
+
+
+  document
+    .getElementById("nextButton")
     .classList.remove("hidden");
 
 }
 
+
+/* =====================================================
+   ĎALŠIA OTÁZKA
+   ===================================================== */
 
 function nextQuestion(){
 
@@ -920,15 +1479,29 @@ function nextQuestion(){
 }
 
 
+/* =====================================================
+   KONIEC TRÉNINGU
+   ===================================================== */
+
 function finishTraining(){
 
-  document.getElementById("finalScore").textContent =
-    score+" / "+questions.length;
+  document
+    .getElementById("progressBar")
+    .style.width="100%";
+
+
+  document
+    .getElementById("finalScore")
+    .textContent =
+      score+" / "+questions.length;
+
 
   let message;
 
   const percent=
-    score/questions.length;
+    questions.length
+      ? score/questions.length
+      : 0;
 
 
   if(percent===1){
@@ -937,21 +1510,18 @@ function finishTraining(){
       "Perfektné! Bez jedinej chyby. 🌟";
 
   }
-
   else if(percent>=0.8){
 
     message=
       "Výborne! Už si skoro na ďalšom leveli. 🚀";
 
   }
-
   else if(percent>=0.6){
 
     message=
       "Pekná práca. Ešte trochu tréningu a bude to super. 💪";
 
   }
-
   else{
 
     message=
@@ -959,13 +1529,23 @@ function finishTraining(){
 
   }
 
-  document.getElementById("finalMessage").textContent =
-    message;
+
+  document
+    .getElementById("finalMessage")
+    .textContent =
+      message;
+
+
+  updateMistakeCounter();
 
   show("finish");
 
 }
 
+
+/* =====================================================
+   SPUSTENIE
+   ===================================================== */
 
 updateMistakeCounter();
 
