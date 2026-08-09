@@ -2,298 +2,102 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DámTo! – Slová a pravopis</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
+  margin:0;font-family:Arial,sans-serif;
   background:linear-gradient(135deg,#eef7ff,#fff5df);
-  color:#17365d;
-  min-height:100vh;
+  color:#17365d;min-height:100vh
 }
-
-.app{
-  max-width:850px;
-  margin:auto;
-  padding:20px;
-}
-
-.hero{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.logo{
-  font-size:58px;
-  font-weight:900;
-  margin:0;
-}
-
+.wrap{max-width:760px;margin:auto;padding:18px}
+.logo{text-align:center;font-size:48px;font-weight:900;margin:5px}
 .logo span{color:#ff9f1c}
-
-.subtitle{
-  color:#65758b;
-  font-weight:700;
-  font-size:20px;
-}
-
+.slogan{text-align:center;color:#718096;font-weight:700;margin-bottom:18px}
 .card{
-  background:#fff;
-  border-radius:28px;
-  padding:28px;
-  box-shadow:0 15px 40px rgba(23,54,93,.12);
+  background:white;border-radius:28px;padding:26px;
+  box-shadow:0 15px 40px rgba(23,54,93,.12)
 }
-
+.center{text-align:center}
 .hidden{display:none!important}
-
-.levels{
-  display:grid;
-  gap:12px;
-  margin:22px 0;
-}
-
+.levels{display:grid;gap:10px;margin:20px 0}
 button{
-  font-family:inherit;
-  cursor:pointer;
+  border:0;border-radius:18px;padding:14px;
+  font-size:17px;font-weight:800;cursor:pointer
 }
-
-.level{
-  border:2px solid transparent;
-  border-radius:20px;
-  padding:18px;
-  background:#eef6ff;
-  color:#17365d;
-  font-size:19px;
-  font-weight:800;
-}
-
-.level.active{
-  border-color:#ff9f1c;
-  background:#fff7e8;
-}
-
-.small{
-  display:block;
-  font-size:14px;
-  color:#718096;
-  margin-top:5px;
-}
-
-.primary{
-  width:100%;
-  border:0;
-  border-radius:18px;
-  padding:16px;
-  background:#2f80ed;
-  color:#fff;
-  font-size:19px;
-  font-weight:800;
-}
-
-.secondary{
-  border:0;
-  border-radius:16px;
-  padding:12px 16px;
-  background:#eef6ff;
-  color:#17365d;
-  font-weight:800;
-}
-
-.mistakes{
-  width:100%;
-  margin-top:10px;
-  border:0;
-  border-radius:18px;
-  padding:15px;
-  background:#fff4df;
-  color:#805400;
-  font-size:17px;
-  font-weight:800;
-}
-
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-
-.badge{
-  background:#fff4df;
-  padding:9px 14px;
-  border-radius:30px;
-  font-weight:800;
-}
-
-.progress{
-  height:13px;
-  background:#e9eff5;
-  border-radius:20px;
-  overflow:hidden;
-  margin:18px 0 10px;
-}
-
-.bar{
-  height:100%;
-  width:0;
-  background:#ff9f1c;
-  transition:.3s;
-}
-
-.stats{
-  display:flex;
-  justify-content:space-between;
-  color:#65758b;
-  font-weight:700;
-}
-
-.instruction{
-  margin-top:25px;
-  color:#65758b;
-  font-weight:700;
-  font-size:18px;
-}
-
-.question{
-  font-size:42px;
-  font-weight:900;
-  margin:25px 0;
-  text-align:center;
-}
-
-.answers{
-  display:grid;
-  gap:12px;
-}
-
-.answer{
-  border:2px solid #dce7f2;
-  background:white;
-  color:#17365d;
-  border-radius:18px;
-  padding:17px;
-  font-size:22px;
-  font-weight:800;
-}
-
-.answer:hover{
-  border-color:#2f80ed;
-  background:#f5f9ff;
-}
-
-.feedback{
-  margin-top:16px;
-  padding:15px;
-  border-radius:17px;
-  line-height:1.5;
-}
-
-.good{
-  background:#e9f8ef;
-  color:#176b46;
-}
-
-.bad{
-  background:#fff0f2;
-  color:#9f3047;
-}
-
-.next{margin-top:14px}
-
-.score{
-  font-size:55px;
-  font-weight:900;
-}
-
-.footer{
-  text-align:center;
-  color:#8795a7;
-  font-size:13px;
-  margin-top:18px;
-}
+.level{background:#eef6ff;color:#17365d;border:2px solid transparent}
+.level.active{border-color:#ff9f1c;background:#fff7e8}
+.primary{width:100%;background:#2f80ed;color:white}
+.mistakes{width:100%;margin-top:10px;background:#fff4df;color:#805400}
+.secondary{background:#eef6ff;color:#17365d}
+.top{display:flex;justify-content:space-between;align-items:center}
+.badge{background:#fff4df;padding:8px 13px;border-radius:30px;font-weight:800}
+.progress{height:12px;background:#e9eff5;border-radius:20px;overflow:hidden;margin:14px 0}
+.bar{height:100%;width:0;background:#ff9f1c}
+.stats{display:flex;justify-content:space-between;color:#65758b;font-weight:700}
+.instruction{margin-top:18px;color:#65758b;font-weight:700}
+.question{text-align:center;font-size:38px;font-weight:900;margin:20px 0}
+.answers{display:grid;gap:10px}
+.answer{background:white;border:2px solid #dce7f2;color:#17365d}
+.answer:hover{border-color:#2f80ed;background:#f5f9ff}
+.feedback{margin-top:14px;padding:14px;border-radius:17px}
+.good{background:#e9f8ef;color:#176b46}
+.bad{background:#fff0f2;color:#9f3047}
+.score{font-size:55px;font-weight:900;margin:15px}
+.footer{text-align:center;color:#8795a7;font-size:13px;margin-top:15px}
 
 @media(max-width:520px){
-  .app{padding:12px}
-  .card{padding:20px 15px}
-  .logo{font-size:43px}
-  .question{font-size:31px}
+  .wrap{padding:10px}
+  .card{padding:19px 14px}
+  .logo{font-size:40px}
+  .question{font-size:29px}
 }
 </style>
 </head>
 
 <body>
+<div class="wrap">
 
-<div class="app">
+<div class="logo">Dám<span>To!</span></div>
+<div class="slogan">Každý deň o level vyššie.</div>
 
-<div class="hero">
-  <h1 class="logo">Dám<span>To!</span></h1>
-  <div class="subtitle">Každý deň o level vyššie.</div>
-</div>
-
-<section id="home" class="card">
-
-  <h1 style="text-align:center">🔤 Slová a pravopis</h1>
-
-  <h2 style="text-align:center">
-    Tvrdé a mäkké spoluhlásky
-  </h2>
-
-  <p style="text-align:center;color:#718096">
-    Vyber si level. V každom tréningu dostaneš
-    náhodný mix slov s i/í aj y/ý.
-  </p>
+<section id="home" class="card center">
+  <div style="font-size:50px">🔤</div>
+  <h1>Slová a pravopis</h1>
+  <h3>Tvrdé a mäkké spoluhlásky</h3>
+  <p>Vyber si level. Každý tréning má náhodný mix i/í a y/ý.</p>
 
   <div class="levels">
-
     <button class="level active" onclick="chooseLevel(1,this)">
-      ⭐ Skúšam
-      <span class="small">Doplň správne písmeno</span>
+      ⭐ Skúšam<br><small>Doplň správne písmeno</small>
     </button>
 
     <button class="level" onclick="chooseLevel(2,this)">
-      ⭐⭐ Už mi to ide
-      <span class="small">Vyber správne slovo</span>
+      ⭐⭐ Už mi to ide<br><small>Vyber správne slovo</small>
     </button>
 
     <button class="level" onclick="chooseLevel(3,this)">
-      ⭐⭐⭐ DámTo!
-      <span class="small">Lovec chýb – vyber správnu vetu</span>
+      ⭐⭐⭐ DámTo!<br><small>Lovec chýb – nájdi správnu vetu</small>
     </button>
-
   </div>
 
-  <button class="primary" onclick="startTraining()">
-    ▶ Začať tréning
-  </button>
+  <button class="primary" onclick="startTraining()">▶ Začať tréning</button>
 
   <button class="mistakes" onclick="startMistakes()">
-    🎯 Precvičiť moje chyby
-    <span id="mistakeCount"></span>
+    🎯 Precvičiť moje chyby <span id="mistakeCount"></span>
   </button>
-
 </section>
 
 
 <section id="game" class="card hidden">
-
   <div class="top">
-
-    <button class="secondary" onclick="goHome()">
-      ← Späť
-    </button>
-
+    <button class="secondary" onclick="goHome()">← Späť</button>
     <div id="levelBadge" class="badge"></div>
-
   </div>
 
-  <div class="progress">
-    <div id="progressBar" class="bar"></div>
-  </div>
+  <div class="progress"><div id="bar" class="bar"></div></div>
 
   <div class="stats">
     <span id="counter"></span>
@@ -301,50 +105,27 @@ button{
   </div>
 
   <div id="instruction" class="instruction"></div>
-
   <div id="question" class="question"></div>
-
   <div id="answers" class="answers"></div>
-
   <div id="feedback"></div>
 
-  <button
-    id="nextButton"
-    class="primary next hidden"
-    onclick="nextQuestion()">
-    Ďalej ➜
-  </button>
-
+  <button id="next" class="primary hidden" style="margin-top:12px"
+    onclick="nextQuestion()">Ďalej ➜</button>
 </section>
 
 
-<section id="finish" class="card hidden" style="text-align:center">
-
+<section id="finish" class="card center hidden">
   <div style="font-size:60px">🏆</div>
-
   <h1>Tréning hotový!</h1>
-
   <div id="finalScore" class="score"></div>
-
   <p id="finalMessage"></p>
 
-  <button class="primary" onclick="startTraining()">
-    🔄 Nový náhodný mix
-  </button>
-
+  <button class="primary" onclick="startTraining()">🔄 Nový náhodný mix</button>
   <br><br>
-
-  <button class="secondary" onclick="goHome()">
-    ⭐ Vybrať level
-  </button>
-
+  <button class="secondary" onclick="goHome()">⭐ Vybrať level</button>
 </section>
 
-
-<div class="footer">
-  DámTo! • Každý deň o level vyššie.
-</div>
-
+<div class="footer">DámTo! • Každý deň o level vyššie.</div>
 </div>
 
 
@@ -352,113 +133,441 @@ button{
 
 const database=[
 
+/* ---------- I / Í ---------- */
+
 {id:"siska",word:"šiška",wrong:"šyška",gap:"š_ška",correct:"i",
-sentences:["Pod stromom ležala šiška.","Veverička našla šišku.","Zo stromu spadla šiška."]},
+sentences:["Na stole je šiška.","V košíku je šiška."]},
 
 {id:"sikovny",word:"šikovný",wrong:"šykovný",gap:"š_kovný",correct:"i",
-sentences:["Miško je veľmi šikovný.","Šikovný žiak úlohu vyriešil.","Náš spolužiak je šikovný."]},
+sentences:["Miško je šikovný.","Náš spolužiak je šikovný."]},
 
 {id:"sidlo",word:"šidlo",wrong:"šydlo",gap:"š_dlo",correct:"i",
-sentences:["Na stole ležalo šidlo.","Staré šidlo bolo ostré.","Remeselník odložil šidlo."]},
+sentences:["Na stole je šidlo.","Remeselník používa šidlo."]},
 
 {id:"sip",word:"šíp",wrong:"šýp",gap:"š_p",correct:"í",
-sentences:["Šíp trafil do terča.","Na zemi ležal šíp.","Lukostrelec vystrelil šíp."]},
+sentences:["Na zemi je šíp.","Lukostrelec drží šíp."]},
 
 {id:"kosik",word:"košík",wrong:"košýk",gap:"koš_k",correct:"í",
-sentences:["Jablká sme dali do košíka.","Na stole stál košík.","Priniesla plný košík."]},
+sentences:["Na stole je košík.","Mama nesie košík."]},
 
 {id:"zirafa",word:"žirafa",wrong:"žyrafa",gap:"ž_rafa",correct:"i",
-sentences:["Žirafa má dlhý krk.","V zoo sme pozorovali žirafu.","Žirafa jedla listy."]},
+sentences:["V zoo je žirafa.","Na obrázku je žirafa."]},
 
 {id:"zivot",word:"život",wrong:"žyvot",gap:"ž_vot",correct:"i",
-sentences:["Život v lese je pestrý.","Voda je potrebná pre život.","Rozprával príbeh zo života."]},
+sentences:["Voda je potrebná pre život.","V lese pulzuje život."]},
 
 {id:"zito",word:"žito",wrong:"žyto",gap:"ž_to",correct:"i",
-sentences:["Na poli dozrieva žito.","Žito sa vlnilo vo vetre.","Farmár zasial žito."]},
+sentences:["Na poli rastie žito.","Farmár pestuje žito."]},
 
 {id:"cinka",word:"činka",wrong:"čynka",gap:"č_nka",correct:"i",
-sentences:["Na podlahe ležala činka.","Športovec zdvihol činku.","Malá činka bola ľahká."]},
+sentences:["Na podlahe je činka.","Športovec zdvihol činka."]},
 
 {id:"cisty",word:"čistý",wrong:"čystý",gap:"č_stý",correct:"i",
-sentences:["Pohár je čistý.","Obliekol si čistý sveter.","Vzduch v lese bol čistý."]},
+sentences:["Pohár je čistý.","Zošit je čistý."]},
 
 {id:"cibula",word:"cibuľa",wrong:"cybuľa",gap:"c_buľa",correct:"i",
-sentences:["Mama nakrájala cibuľu.","Na stole ležala cibuľa.","Cibuľa má výraznú vôňu."]},
+sentences:["Na stole je cibuľa.","V košíku je cibuľa."]},
 
 {id:"citron",word:"citrón",wrong:"cytrón",gap:"c_trón",correct:"i",
-sentences:["Do čaju som dal citrón.","Citrón chutí kyslo.","Na stole bol citrón."]},
+sentences:["Na stole je citrón.","V čaji je citrón."]},
 
 {id:"divadlo",word:"divadlo",wrong:"dyvadlo",gap:"d_vadlo",correct:"i",
-sentences:["Pôjdeme do divadla.","Divadlo uviedlo rozprávku.","Pred divadlom čakali deti."]},
+sentences:["V meste je divadlo.","Deti navštívili divadlo."]},
 
 {id:"dedina",word:"dedina",wrong:"dedyna",gap:"ded_na",correct:"i",
-sentences:["Naša dedina leží pri lese.","Dedina bola večer tichá.","Cez dedinu vedie cesta."]},
+sentences:["Pod kopcom je dedina.","Naša dedina je malá."]},
 
 {id:"hodina",word:"hodina",wrong:"hodyna",gap:"hod_na",correct:"i",
-sentences:["Hodina sa začala načas.","Jedna hodina rýchlo ubehla.","Čaká nás hodina slovenčiny."]},
+sentences:["Začala sa hodina.","Toto je hodina slovenčiny."]},
 
 {id:"ticho",word:"ticho",wrong:"tycho",gap:"t_cho",correct:"i",
-sentences:["V triede bolo ticho.","V lese zavládlo ticho.","Prosím, buď ticho."]},
+sentences:["V triede je ticho.","V lese je ticho."]},
 
 {id:"tisic",word:"tisíc",wrong:"tysíc",gap:"t_síc",correct:"i",
-sentences:["Tisíc je veľké číslo.","Prišlo tisíc ľudí.","Kniha má tisíc strán."]},
+sentences:["Číslo je tisíc.","Výsledok je tisíc."]},
 
 {id:"nitka",word:"nitka",wrong:"nytka",gap:"n_tka",correct:"i",
-sentences:["Na stole ležala nitka.","Nitka sa pretrhla.","Navliekla nitku do ihly."]},
+sentences:["Na stole je nitka.","V krabičke je nitka."]},
 
 {id:"nikto",word:"nikto",wrong:"nykto",gap:"n_kto",correct:"i",
-sentences:["Nikto dnes nechýbal.","Nikto nepoznal odpoveď.","Nikto nechcel odísť."]},
+sentences:["Dnes nechýba nikto.","Odpoveď nepoznal nikto."]},
 
 {id:"lipa",word:"lipa",wrong:"lypa",gap:"l_pa",correct:"i",
-sentences:["Pred domom rastie lipa.","Lipa krásne kvitne.","Pod lipou sme oddychovali."]},
+sentences:["Pred domom rastie lipa.","Pri škole je lipa."]},
+
+{id:"list",word:"list",wrong:"lyst",gap:"l_st",correct:"i",
+sentences:["Na zemi je list.","Zo stromu spadol list."]},
 
 {id:"malina",word:"malina",wrong:"malyna",gap:"mal_na",correct:"i",
-sentences:["Na kríku dozrela malina.","Malina bola sladká.","Do misky som dal malinu."]},
+sentences:["Na kríku je malina.","V miske je malina."]},
 
 {id:"dolina",word:"dolina",wrong:"dolyna",gap:"dol_na",correct:"i",
-sentences:["Pod nami bola dolina.","Dolina bola zahalená hmlou.","Cesta viedla cez dolinu."]},
+sentences:["Pod nami je dolina.","Za kopcom je dolina."]},
 
+
+/* ---------- Y / Ý ---------- */
 
 {id:"hybat",word:"hýbať",wrong:"híbať",gap:"h_bať",correct:"ý",
-sentences:["Začal hýbať rukou.","Strom sa začal hýbať.","So skriňou sa nedalo hýbať."]},
+sentences:["Skús hýbať rukou.","Môžeme hýbať stolom."]},
 
 {id:"pohyb",word:"pohyb",wrong:"pohib",gap:"poh_b",correct:"y",
-sentences:["Pohyb je pre telo dôležitý.","Zbadal som pohyb v tráve.","Pravidelný pohyb prospieva zdraviu."]},
+sentences:["Telo potrebuje pohyb.","V tráve vidím pohyb."]},
 
 {id:"hynut",word:"hynúť",wrong:"hinúť",gap:"h_núť",correct:"y",
-sentences:["Bez vody môžu rastliny hynúť.","Ryby začali hynúť.","Živočíchy nesmú hynúť."]},
+sentences:["Bez vody môžu rastliny hynúť.","Ryby nesmú hynúť."]},
 
 {id:"hydina",word:"hydina",wrong:"hidina",gap:"h_dina",correct:"y",
-sentences:["Na dvore behala hydina.","Farmár chová hydinu.","Hydina dostala krmivo."]},
+sentences:["Na dvore je hydina.","Farmár chová hydina."]},
 
 {id:"chyba",word:"chyba",wrong:"chiba",gap:"ch_ba",correct:"y",
-sentences:["V texte bola chyba.","Každá chyba sa dá opraviť.","Našli sme chybu vo vete."]},
+sentences:["V texte je chyba.","Na tabuli je chyba."]},
 
 {id:"chybny",word:"chybný",wrong:"chibný",gap:"ch_bný",correct:"y",
-sentences:["Výsledok bol chybný.","Opravil chybný údaj.","Chybný zápis sme opravili."]},
+sentences:["Výsledok je chybný.","Tento údaj je chybný."]},
 
 {id:"chytat",word:"chytať",wrong:"chitať",gap:"ch_tať",correct:"y",
-sentences:["Deti začali chytať loptu.","Mačka začala chytať muchy.","Učili sa chytať loptu."]},
+sentences:["Deti idú chytať loptu.","Mačka začala chytať muchy."]},
 
 {id:"chytit",word:"chytiť",wrong:"chitiť",gap:"ch_tiť",correct:"y",
-sentences:["Skús chytiť loptu.","Podarilo sa mu chytiť motýľa.","Musel chytiť pohár."]},
+sentences:["Skús chytiť loptu.","Chcem chytiť motýľa."]},
+
+{id:"chybat",word:"chýbať",wrong:"chíbať",gap:"ch_bať",correct:"ý",
+sentences:["Dnes nesmie nikto chýbať.","V skladačke môže chýbať dielik."]},
 
 {id:"chystat",word:"chystať",wrong:"chistať",gap:"ch_stať",correct:"y",
-sentences:["Začali sme chystať desiatu.","Mama išla chystať večeru.","Deti pomáhali chystať výzdobu."]},
+sentences:["Ideme chystať desiatu.","Začali sme chystať výzdobu."]},
 
 {id:"kytica",word:"kytica",wrong:"kitica",gap:"k_tica",correct:"y",
-sentences:["Na stole bola kytica kvetov.","Dostala krásnu kyticu.","Kytica voňala."]},
+sentences:["Na stole je kytica.","Vo váze je kytica."]},
 
 {id:"kysly",word:"kyslý",wrong:"kislý",gap:"k_slý",correct:"y",
-sentences:["Citrón je kyslý.","Nápoj bol kyslý.","Ochutnal kyslý cukrík."]},
+sentences:["Citrón je kyslý.","Nápoj je kyslý."]},
 
 {id:"kysnut",word:"kysnúť",wrong:"kisnúť",gap:"k_snúť",correct:"y",
-sentences:["Cesto necháme kysnúť.","Cesto začalo kysnúť.","Kvások pomáha cestu kysnúť."]},
+sentences:["Cesto začne kysnúť.","Necháme cesto kysnúť."]},
 
 {id:"kyvat",word:"kývať",wrong:"kívať",gap:"k_vať",correct:"ý",
-sentences:["Začal kývať rukou.","Deti nám kývali.","Bolo ho vidieť kývať rukou."]},
+sentences:["Začal kývať rukou.","Môžeš kývať zástavou."]},
+
+{id:"kychat",word:"kýchať",wrong:"kíchať",gap:"k_chať",correct:"ý",
+sentences:["Od prachu začal kýchať.","Na jar môže často kýchať."]},
 
 {id:"dych",word:"dych",wrong:"dich",gap:"d_ch",correct:"y",
-sentences:["Po behu sa mu zrýchlil dych.","Zadržal dych.","Studený vzduch mu vzal dych."]},
+sentences:["Po behu mám rýchly dych.","Na chvíľu zadrž dych."]},
 
-{id:"dychat",word:"dýchať",
+{id:"dychat",word:"dýchať",wrong:"díchať",gap:"d_chať",correct:"ý",
+sentences:["Treba pokojne dýchať.","Pod vodou nemožno dýchať."]},
+
+{id:"oddych",word:"oddych",wrong:"oddich",gap:"odd_ch",correct:"y",
+sentences:["Po práci potrebujem oddych.","Po výlete príde oddych."]},
+
+{id:"dym",word:"dym",wrong:"dim",gap:"d_m",correct:"y",
+sentences:["Z komína stúpa dym.","Vo vzduchu je dym."]},
+
+{id:"dyka",word:"dýka",wrong:"díka",gap:"d_ka",correct:"ý",
+sentences:["V múzeu je dýka.","Za sklom je stará dýka."]},
+
+{id:"tyc",word:"tyč",wrong:"tič",gap:"t_č",correct:"y",
+sentences:["Na zemi je tyč.","Robotník nesie tyč."]},
+
+{id:"tycka",word:"tyčka",wrong:"tička",gap:"t_čka",correct:"y",
+sentences:["V zemi je tyčka.","Pri kvete je tyčka."]},
+
+{id:"tykadlo",word:"tykadlo",wrong:"tikadlo",gap:"t_kadlo",correct:"y",
+sentences:["Motýľ má tykadlo.","Chrobák pohol tykadlo."]},
+
+{id:"motyka",word:"motyka",wrong:"motika",gap:"mot_ka",correct:"y",
+sentences:["V záhrade je motyka.","Pri plote je motyka."]},
+
+{id:"tyzden",word:"týždeň",wrong:"tíždeň",gap:"t_ždeň",correct:"ý",
+sentences:["Tento týždeň je krátky.","Nasleduje nový týždeň."]},
+
+{id:"dotyk",word:"dotyk",wrong:"dotik",gap:"dot_k",correct:"y",
+sentences:["Displej reaguje na dotyk.","Bol to jemný dotyk."]},
+
+{id:"lyko",word:"lyko",wrong:"liko",gap:"l_ko",correct:"y",
+sentences:["Pod kôrou je lyko.","Rastlina má lyko."]},
+
+{id:"lysina",word:"lysina",wrong:"lisina",gap:"l_sina",correct:"y",
+sentences:["Na kopci je lysina.","V lese vznikla lysina."]},
+
+{id:"lytko",word:"lýtko",wrong:"lítko",gap:"l_tko",correct:"ý",
+sentences:["Po behu ma bolí lýtko.","Športovec si natiahol lýtko."]},
+
+{id:"lyze",word:"lyže",wrong:"liže",gap:"l_že",correct:"y",
+sentences:["V pivnici sú lyže.","Deti majú nové lyže."]},
+
+{id:"lyzica",word:"lyžica",wrong:"ližica",gap:"l_žica",correct:"y",
+sentences:["Na stole je lyžica.","Pri tanieri je lyžica."]},
+
+{id:"mlyn",word:"mlyn",wrong:"mlin",gap:"ml_n",correct:"y",
+sentences:["Pri potoku je mlyn.","Navštívili sme mlyn."]},
+
+{id:"plyn",word:"plyn",wrong:"plin",gap:"pl_n",correct:"y",
+sentences:["V potrubí je plyn.","Technik kontroluje plyn."]},
+
+{id:"plys",word:"plyš",wrong:"pliš",gap:"pl_š",correct:"y",
+sentences:["Hračka je z plyšu.","Na kresle je plyš."]},
+
+{id:"plytky",word:"plytký",wrong:"plitký",gap:"pl_tký",correct:"y",
+sentences:["Potok je plytký.","Tanier je plytký."]},
+
+{id:"plytcina",word:"plytčina",wrong:"plitčina",gap:"pl_tčina",correct:"y",
+sentences:["Pri brehu je plytčina.","Deti stoja na plytčine."]}
+
+];
+
+
+/* ---------- PREMENNÉ ---------- */
+
+let level=1;
+let questions=[];
+let current=0;
+let score=0;
+let locked=false;
+
+
+/* ---------- POMOCNÉ ---------- */
+
+function shuffle(a){
+  a=[...a];
+  for(let i=a.length-1;i>0;i--){
+    let j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function chooseLevel(n,btn){
+  level=n;
+  document.querySelectorAll(".level").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+function show(id){
+  ["home","game","finish"].forEach(x=>document.getElementById(x).classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
+
+
+/* ---------- CHYBY ---------- */
+
+function getMistakes(){
+  try{
+    return JSON.parse(localStorage.getItem("damtoMistakes")||"{}");
+  }catch(e){
+    return {};
+  }
+}
+
+function saveMistakes(x){
+  localStorage.setItem("damtoMistakes",JSON.stringify(x));
+  updateMistakes();
+}
+
+function wrongAnswer(id){
+  let m=getMistakes();
+  m[id]=(m[id]||0)+1;
+  saveMistakes(m);
+}
+
+function correctAnswer(id){
+  let m=getMistakes();
+  if(m[id]){
+    m[id]--;
+    if(m[id]<=0)delete m[id];
+    saveMistakes(m);
+  }
+}
+
+function updateMistakes(){
+  let n=Object.keys(getMistakes()).length;
+  document.getElementById("mistakeCount").textContent=n?"("+n+")":"";
+}
+
+
+/* ---------- MIX 5 + 5 ---------- */
+
+function buildDeck(){
+  let m=getMistakes();
+
+  let soft=database.filter(x=>x.correct==="i"||x.correct==="í");
+  let hard=database.filter(x=>x.correct==="y"||x.correct==="ý");
+
+  soft=[
+    ...shuffle(soft.filter(x=>m[x.id])),
+    ...shuffle(soft.filter(x=>!m[x.id]))
+  ];
+
+  hard=[
+    ...shuffle(hard.filter(x=>m[x.id])),
+    ...shuffle(hard.filter(x=>!m[x.id]))
+  ];
+
+  return shuffle([
+    ...soft.slice(0,5),
+    ...hard.slice(0,5)
+  ]);
+}
+
+
+/* ---------- SPUSTENIE ---------- */
+
+function startTraining(){
+  questions=buildDeck();
+  current=0;
+  score=0;
+  show("game");
+  render();
+}
+
+function startMistakes(){
+  let m=getMistakes();
+  let list=database.filter(x=>m[x.id]);
+
+  if(!list.length){
+    alert("Zatiaľ nemáš uložené žiadne chyby. 🎉");
+    return;
+  }
+
+  questions=shuffle(list).slice(0,10);
+  current=0;
+  score=0;
+  show("game");
+  render();
+}
+
+function goHome(){
+  updateMistakes();
+  show("home");
+}
+
+
+/* ---------- OTÁZKA ---------- */
+
+function render(){
+  locked=false;
+
+  if(current>=questions.length){
+    finish();
+    return;
+  }
+
+  let x=questions[current];
+
+  document.getElementById("counter").textContent=(current+1)+" / "+questions.length;
+  document.getElementById("points").textContent=score;
+  document.getElementById("bar").style.width=(current/questions.length*100)+"%";
+  document.getElementById("feedback").innerHTML="";
+  document.getElementById("feedback").className="";
+  document.getElementById("next").classList.add("hidden");
+
+  document.getElementById("levelBadge").textContent=
+    level===1?"⭐ Skúšam":
+    level===2?"⭐⭐ Už mi to ide":"⭐⭐⭐ DámTo!";
+
+  if(level===1){
+    document.getElementById("instruction").textContent="✏️ Doplň správne písmeno";
+    document.getElementById("question").textContent=x.gap;
+
+    let wrong=
+      x.correct==="i"?"y":
+      x.correct==="í"?"ý":
+      x.correct==="y"?"i":"í";
+
+    answers([x.correct,wrong],x.correct);
+  }
+
+  if(level===2){
+    document.getElementById("instruction").textContent="🧩 Vyber správne slovo";
+    document.getElementById("question").textContent="Ktoré slovo je správne?";
+    answers([x.word,x.wrong],x.word);
+  }
+
+  if(level===3){
+    document.getElementById("instruction").textContent="🔎 Lovec chýb";
+    document.getElementById("question").textContent="Ktorá veta je napísaná správne?";
+
+    let good=shuffle(x.sentences)[0];
+    let bad=good.replace(x.word,x.wrong);
+
+    if(good===bad){
+      current++;
+      render();
+      return;
+    }
+
+    answers([good,bad],good);
+  }
+}
+
+
+/* ---------- ODPOVEDE ---------- */
+
+function answers(options,correct){
+  let box=document.getElementById("answers");
+  box.innerHTML="";
+
+  shuffle(options).forEach(option=>{
+    let b=document.createElement("button");
+    b.className="answer";
+    b.textContent=option;
+    b.onclick=()=>check(option===correct);
+    box.appendChild(b);
+  });
+}
+
+
+/* ---------- VYHODNOTENIE ---------- */
+
+function check(ok){
+  if(locked)return;
+  locked=true;
+
+  let x=questions[current];
+  let f=document.getElementById("feedback");
+
+  if(ok){
+    score++;
+    correctAnswer(x.id);
+    f.className="feedback good";
+    f.innerHTML="🎉 <b>Výborne!</b> Správna odpoveď.";
+  }else{
+    wrongAnswer(x.id);
+    f.className="feedback bad";
+    f.innerHTML="💡 <b>Ešte nie.</b> Správne je <b>"+x.word+"</b>.";
+  }
+
+  document.getElementById("points").textContent=score;
+  document.querySelectorAll(".answer").forEach(b=>b.disabled=true);
+  document.getElementById("next").classList.remove("hidden");
+}
+
+function nextQuestion(){
+  current++;
+  render();
+}
+
+
+/* ---------- KONIEC ---------- */
+
+function finish(){
+  document.getElementById("finalScore").textContent=score+" / "+questions.length;
+
+  let p=score/questions.length;
+
+  document.getElementById("finalMessage").textContent=
+    p===1?"Perfektné! Bez chyby. 🌟":
+    p>=.8?"Výborne! 🚀":
+    p>=.6?"Pekná práca. 💪":
+    "Skús ešte jeden tréning. 🌱";
+
+  updateMistakes();
+  show("finish");
+}
+
+updateMistakes();
+
+</script>
+</body>
+</html>
