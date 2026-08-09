@@ -7,9 +7,7 @@
 <title>DámTo! – Slová a pravopis</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -19,274 +17,211 @@ body{
   min-height:100vh;
 }
 
-button{
-  font-family:inherit;
-}
-
-.hidden{
-  display:none !important;
-}
-
 .app{
-  width:min(1100px,94%);
-  margin:0 auto;
-  padding:28px 0 50px;
+  max-width:850px;
+  margin:auto;
+  padding:20px;
 }
 
 .hero{
   text-align:center;
-  margin-bottom:28px;
+  margin-bottom:20px;
 }
 
 .logo{
-  font-size:clamp(46px,8vw,78px);
+  font-size:58px;
   font-weight:900;
-  color:#17365d;
-  letter-spacing:-3px;
   margin:0;
 }
 
-.logo span{
-  color:#ff9f1c;
-}
+.logo span{color:#ff9f1c}
 
 .subtitle{
-  font-size:clamp(18px,3vw,25px);
-  margin-top:8px;
+  color:#65758b;
   font-weight:700;
-  color:#44617f;
+  font-size:20px;
 }
 
 .card{
-  background:white;
+  background:#fff;
   border-radius:28px;
-  box-shadow:0 14px 40px rgba(23,54,93,.12);
   padding:28px;
+  box-shadow:0 15px 40px rgba(23,54,93,.12);
 }
+
+.hidden{display:none!important}
 
 .levels{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin:25px 0;
+  gap:12px;
+  margin:22px 0;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
 }
 
 .level{
-  border:3px solid transparent;
-  background:#f7fbff;
-  border-radius:24px;
-  padding:22px 16px;
-  cursor:pointer;
-  transition:.2s;
-  text-align:center;
-  min-height:150px;
-}
-
-.level:hover{
-  transform:translateY(-3px);
+  border:2px solid transparent;
+  border-radius:20px;
+  padding:18px;
+  background:#eef6ff;
+  color:#17365d;
+  font-size:19px;
+  font-weight:800;
 }
 
 .level.active{
   border-color:#ff9f1c;
-  background:#fff8e8;
+  background:#fff7e8;
 }
 
-.stars{
-  font-size:30px;
-  margin-bottom:10px;
+.small{
+  display:block;
+  font-size:14px;
+  color:#718096;
+  margin-top:5px;
 }
 
-.level h3{
-  margin:6px 0;
-  font-size:22px;
-}
-
-.level p{
-  margin:0;
-  color:#60758c;
-  line-height:1.45;
-}
-
-.mainButton{
+.primary{
   width:100%;
   border:0;
   border-radius:18px;
-  padding:17px 22px;
-  background:#17365d;
-  color:white;
-  font-size:20px;
+  padding:16px;
+  background:#2f80ed;
+  color:#fff;
+  font-size:19px;
   font-weight:800;
-  cursor:pointer;
-  transition:.2s;
 }
 
-.mainButton:hover{
-  transform:translateY(-2px);
-}
-
-.secondaryButton{
-  width:100%;
-  border:2px solid #17365d;
-  border-radius:18px;
-  padding:15px 20px;
-  background:white;
+.secondary{
+  border:0;
+  border-radius:16px;
+  padding:12px 16px;
+  background:#eef6ff;
   color:#17365d;
-  font-size:18px;
   font-weight:800;
-  cursor:pointer;
-  margin-top:12px;
 }
 
-.topbar{
+.mistakes{
+  width:100%;
+  margin-top:10px;
+  border:0;
+  border-radius:18px;
+  padding:15px;
+  background:#fff4df;
+  color:#805400;
+  font-size:17px;
+  font-weight:800;
+}
+
+.top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:14px;
-  margin-bottom:18px;
-  flex-wrap:wrap;
+  gap:10px;
 }
 
 .badge{
-  background:#fff3d6;
-  color:#8a5700;
+  background:#fff4df;
   padding:9px 14px;
-  border-radius:999px;
+  border-radius:30px;
   font-weight:800;
 }
 
-.score{
-  font-weight:900;
-  font-size:18px;
-}
-
 .progress{
-  width:100%;
-  height:14px;
-  background:#e8eef5;
-  border-radius:999px;
+  height:13px;
+  background:#e9eff5;
+  border-radius:20px;
   overflow:hidden;
-  margin:14px 0 26px;
+  margin:18px 0 10px;
 }
 
-.progressBar{
+.bar{
   height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#ff9f1c,#ffd166);
+  width:0;
+  background:#ff9f1c;
   transition:.3s;
 }
 
-.instruction{
-  text-align:center;
-  color:#60758c;
-  font-size:18px;
+.stats{
+  display:flex;
+  justify-content:space-between;
+  color:#65758b;
   font-weight:700;
-  margin-bottom:10px;
+}
+
+.instruction{
+  margin-top:25px;
+  color:#65758b;
+  font-weight:700;
+  font-size:18px;
 }
 
 .question{
-  text-align:center;
-  font-size:clamp(30px,6vw,52px);
+  font-size:42px;
   font-weight:900;
-  margin:20px 0 28px;
-  color:#17365d;
+  margin:25px 0;
+  text-align:center;
 }
 
 .answers{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
+  gap:12px;
 }
 
 .answer{
-  border:3px solid #d9e5f0;
-  background:#f9fcff;
+  border:2px solid #dce7f2;
+  background:white;
   color:#17365d;
-  border-radius:20px;
-  padding:20px 16px;
-  font-size:clamp(20px,3vw,28px);
-  font-weight:900;
-  cursor:pointer;
-  transition:.2s;
+  border-radius:18px;
+  padding:17px;
+  font-size:22px;
+  font-weight:800;
 }
 
 .answer:hover{
-  border-color:#ff9f1c;
-  background:#fff8e8;
-  transform:translateY(-2px);
-}
-
-.answer:disabled{
-  cursor:default;
-  opacity:.8;
+  border-color:#2f80ed;
+  background:#f5f9ff;
 }
 
 .feedback{
-  margin-top:22px;
-  padding:17px;
-  border-radius:18px;
-  text-align:center;
-  font-size:18px;
+  margin-top:16px;
+  padding:15px;
+  border-radius:17px;
   line-height:1.5;
 }
 
 .good{
-  background:#e8f8ee;
-  color:#176b38;
+  background:#e9f8ef;
+  color:#176b46;
 }
 
 .bad{
-  background:#fff0ee;
-  color:#a13227;
+  background:#fff0f2;
+  color:#9f3047;
 }
 
-.nextButton{
-  margin-top:16px;
-}
+.next{margin-top:14px}
 
-.finish{
-  text-align:center;
-}
-
-.finishIcon{
-  font-size:70px;
-}
-
-.finalScore{
-  font-size:50px;
+.score{
+  font-size:55px;
   font-weight:900;
-  color:#17365d;
-  margin:10px 0;
 }
 
-.finalMessage{
-  font-size:21px;
-  color:#60758c;
-  margin-bottom:24px;
-}
-
-.smallNote{
+.footer{
   text-align:center;
+  color:#8795a7;
+  font-size:13px;
   margin-top:18px;
-  color:#70849a;
-  font-size:14px;
 }
 
-@media(max-width:760px){
-  .levels{
-    grid-template-columns:1fr;
-  }
-
-  .answers{
-    grid-template-columns:1fr;
-  }
-
-  .card{
-    padding:20px;
-  }
-
-  .app{
-    padding-top:18px;
-  }
+@media(max-width:520px){
+  .app{padding:12px}
+  .card{padding:20px 15px}
+  .logo{font-size:43px}
+  .question{font-size:31px}
 }
 </style>
 </head>
@@ -295,2161 +230,235 @@ button{
 
 <div class="app">
 
-  <section id="home">
+<div class="hero">
+  <h1 class="logo">Dám<span>To!</span></h1>
+  <div class="subtitle">Každý deň o level vyššie.</div>
+</div>
 
-    <div class="hero">
-      <h1 class="logo">Dám<span>To!</span></h1>
-      <div class="subtitle">
-        Trénuj pravopis hravo a bez stresu
-      </div>
-    </div>
+<section id="home" class="card">
 
-    <div class="card">
+  <h1 style="text-align:center">🔤 Slová a pravopis</h1>
 
-      <h2 style="text-align:center;margin-top:0;">
-        Vyber si level
-      </h2>
+  <h2 style="text-align:center">
+    Tvrdé a mäkké spoluhlásky
+  </h2>
 
-      <div class="levels">
+  <p style="text-align:center;color:#718096">
+    Vyber si level. V každom tréningu dostaneš
+    náhodný mix slov s i/í aj y/ý.
+  </p>
 
-        <button
-          class="level active"
-          onclick="chooseLevel(1,this)"
-        >
-          <div class="stars">⭐</div>
-          <h3>Skúšam</h3>
-          <p>
-            Doplň správne písmeno
-            <b>i / í / y / ý</b>.
-          </p>
-        </button>
+  <div class="levels">
 
-        <button
-          class="level"
-          onclick="chooseLevel(2,this)"
-        >
-          <div class="stars">⭐⭐</div>
-          <h3>Už mi to ide</h3>
-          <p>
-            Vyber správne napísané slovo.
-          </p>
-        </button>
+    <button class="level active" onclick="chooseLevel(1,this)">
+      ⭐ Skúšam
+      <span class="small">Doplň správne písmeno</span>
+    </button>
 
-        <button
-          class="level"
-          onclick="chooseLevel(3,this)"
-        >
-          <div class="stars">⭐⭐⭐</div>
-          <h3>DámTo!</h3>
-          <p>
-            Staň sa lovcom chýb
-            a nájdi správnu vetu.
-          </p>
-        </button>
+    <button class="level" onclick="chooseLevel(2,this)">
+      ⭐⭐ Už mi to ide
+      <span class="small">Vyber správne slovo</span>
+    </button>
 
-      </div>
+    <button class="level" onclick="chooseLevel(3,this)">
+      ⭐⭐⭐ DámTo!
+      <span class="small">Lovec chýb – vyber správnu vetu</span>
+    </button>
 
-      <button
-        class="mainButton"
-        onclick="startTraining()"
-      >
-        🚀 Spustiť tréning
-      </button>
+  </div>
 
-      <button
-        class="secondaryButton"
-        onclick="startMistakes()"
-      >
-        🎯 Precvičiť moje chyby
-        <span id="mistakeCount"></span>
-      </button>
+  <button class="primary" onclick="startTraining()">
+    ▶ Začať tréning
+  </button>
 
-      <div class="smallNote">
-        Každý tréning obsahuje náhodný mix úloh.
-      </div>
+  <button class="mistakes" onclick="startMistakes()">
+    🎯 Precvičiť moje chyby
+    <span id="mistakeCount"></span>
+  </button>
 
-    </div>
-
-  </section>
+</section>
 
 
-  <section
-    id="game"
-    class="hidden"
-  >
+<section id="game" class="card hidden">
 
-    <div class="card">
+  <div class="top">
 
-      <div class="topbar">
+    <button class="secondary" onclick="goHome()">
+      ← Späť
+    </button>
 
-        <div
-          id="levelBadge"
-          class="badge"
-        >
-          ⭐ Skúšam
-        </div>
+    <div id="levelBadge" class="badge"></div>
 
-        <div class="score">
-          Body:
-          <span id="points">0</span>
-          &nbsp; • &nbsp;
-          <span id="counter">1 / 10</span>
-        </div>
+  </div>
 
-      </div>
+  <div class="progress">
+    <div id="progressBar" class="bar"></div>
+  </div>
 
-      <div class="progress">
-        <div
-          id="progressBar"
-          class="progressBar"
-        ></div>
-      </div>
+  <div class="stats">
+    <span id="counter"></span>
+    <span>🏆 <span id="points">0</span></span>
+  </div>
 
-      <div
-        id="instruction"
-        class="instruction"
-      ></div>
+  <div id="instruction" class="instruction"></div>
 
-      <div
-        id="question"
-        class="question"
-      ></div>
+  <div id="question" class="question"></div>
 
-      <div
-        id="answers"
-        class="answers"
-      ></div>
+  <div id="answers" class="answers"></div>
 
-      <div
-        id="feedback"
-      ></div>
+  <div id="feedback"></div>
 
-      <button
-        id="nextButton"
-        class="mainButton nextButton hidden"
-        onclick="nextQuestion()"
-      >
-        Ďalšia otázka →
-      </button>
+  <button
+    id="nextButton"
+    class="primary next hidden"
+    onclick="nextQuestion()">
+    Ďalej ➜
+  </button>
 
-    </div>
-
-  </section>
+</section>
 
 
-  <section
-    id="finish"
-    class="hidden"
-  >
+<section id="finish" class="card hidden" style="text-align:center">
 
-    <div class="card finish">
+  <div style="font-size:60px">🏆</div>
 
-      <div class="finishIcon">🏆</div>
+  <h1>Tréning hotový!</h1>
 
-      <h2>Tréning dokončený!</h2>
+  <div id="finalScore" class="score"></div>
 
-      <div
-        id="finalScore"
-        class="finalScore"
-      ></div>
+  <p id="finalMessage"></p>
 
-      <div
-        id="finalMessage"
-        class="finalMessage"
-      ></div>
+  <button class="primary" onclick="startTraining()">
+    🔄 Nový náhodný mix
+  </button>
 
-      <button
-        class="mainButton"
-        onclick="startTraining()"
-      >
-        🔄 Nový náhodný tréning
-      </button>
+  <br><br>
 
-      <button
-        class="secondaryButton"
-        onclick="goHome()"
-      >
-        ← Späť na výber levelu
-      </button>
+  <button class="secondary" onclick="goHome()">
+    ⭐ Vybrať level
+  </button>
 
-    </div>
+</section>
 
-  </section>
+
+<div class="footer">
+  DámTo! • Každý deň o level vyššie.
+</div>
 
 </div>
 
+
 <script>
 
-/* =====================================================
-   DATABÁZA SLOV
-   ===================================================== */
-
-const database = [
-    {
-    id:"sikovny",
-    word:"šikovný",
-    wrong:"šykovný",
-    gap:"š_kovný",
-    correct:"i",
-    sentences:[
-      "Miško je veľmi šikovný.",
-      "Šikovný žiak úlohu vyriešil.",
-      "Náš spolužiak je šikovný."
-    ]
-  },
-
-  {
-    id:"siska",
-    word:"šiška",
-    wrong:"šyška",
-    gap:"š_ška",
-    correct:"i",
-    sentences:[
-      "Pod stromom ležala šiška.",
-      "Veverička našla šišku.",
-      "Zo stromu spadla šiška."
-    ]
-  },
-
-  {
-    id:"zirafa",
-    word:"žirafa",
-    wrong:"žyrafa",
-    gap:"ž_rafa",
-    correct:"i",
-    sentences:[
-      "Žirafa má dlhý krk.",
-      "V zoo sme pozorovali žirafu.",
-      "Žirafa jedla zelené listy."
-    ]
-  },
-
-  {
-    id:"zivot",
-    word:"život",
-    wrong:"žyvot",
-    gap:"ž_vot",
-    correct:"i",
-    sentences:[
-      "Život v lese je pestrý.",
-      "Voda je potrebná pre život.",
-      "Rozprával príbeh zo života."
-    ]
-  },
-
-  {
-    id:"cibula",
-    word:"cibuľa",
-    wrong:"cybuľa",
-    gap:"c_buľa",
-    correct:"i",
-    sentences:[
-      "Mama nakrájala cibuľu.",
-      "Na stole ležala cibuľa.",
-      "Cibuľa má výraznú vôňu."
-    ]
-  },
-
-  {
-    id:"citron",
-    word:"citrón",
-    wrong:"cytrón",
-    gap:"c_trón",
-    correct:"i",
-    sentences:[
-      "Do čaju som dal citrón.",
-      "Citrón chutí kyslo.",
-      "Na stole bol žltý citrón."
-    ]
-  },
-
-  {
-    id:"cinka",
-    word:"činka",
-    wrong:"čynka",
-    gap:"č_nka",
-    correct:"i",
-    sentences:[
-      "Na podlahe ležala činka.",
-      "Športovec zdvihol činku.",
-      "Malá činka bola ľahká."
-    ]
-  },
-
-  {
-    id:"cisty",
-    word:"čistý",
-    wrong:"čystý",
-    gap:"č_stý",
-    correct:"i",
-    sentences:[
-      "Pohár je úplne čistý.",
-      "Obliekol si čistý sveter.",
-      "Vzduch v lese bol čistý."
-    ]
-  },
-
-  {
-    id:"divadlo",
-    word:"divadlo",
-    wrong:"dyvadlo",
-    gap:"d_vadlo",
-    correct:"i",
-    sentences:[
-      "V sobotu pôjdeme do divadla.",
-      "Divadlo uviedlo novú rozprávku.",
-      "Pred divadlom čakali deti."
-    ]
-  },
-
-  {
-    id:"dedina",
-    word:"dedina",
-    wrong:"dedyna",
-    gap:"ded_na",
-    correct:"i",
-    sentences:[
-      "Naša dedina leží pri lese.",
-      "Dedina bola večer tichá.",
-      "Cez dedinu vedie cesta."
-    ]
-  },
-
-  {
-    id:"hodina",
-    word:"hodina",
-    wrong:"hodyna",
-    gap:"hod_na",
-    correct:"i",
-    sentences:[
-      "Hodina sa začala načas.",
-      "Jedna hodina rýchlo ubehla.",
-      "Čaká nás hodina slovenčiny."
-    ]
-  },
-
-  {
-    id:"ticho",
-    word:"ticho",
-    wrong:"tycho",
-    gap:"t_cho",
-    correct:"i",
-    sentences:[
-      "V triede bolo ticho.",
-      "V lese zavládlo ticho.",
-      "Prosím, buď chvíľu ticho."
-    ]
-  },
-
-  {
-    id:"tisic",
-    word:"tisíc",
-    wrong:"tysíc",
-    gap:"t_síc",
-    correct:"i",
-    sentences:[
-      "Tisíc je veľké číslo.",
-      "Na štadióne bolo tisíc ľudí.",
-      "Kniha má takmer tisíc strán."
-    ]
-  },
-
-  {
-    id:"nitka",
-    word:"nitka",
-    wrong:"nytka",
-    gap:"n_tka",
-    correct:"i",
-    sentences:[
-      "Na stole ležala nitka.",
-      "Nitka sa pretrhla.",
-      "Navliekla nitku do ihly."
-    ]
-  },
-
-  {
-    id:"nikto",
-    word:"nikto",
-    wrong:"nykto",
-    gap:"n_kto",
-    correct:"i",
-    sentences:[
-      "Nikto dnes nechýbal.",
-      "Nikto nepoznal odpoveď.",
-      "Nikto nechcel odísť."
-    ]
-  },
-
-  {
-    id:"noviny",
-    word:"noviny",
-    wrong:"novyny",
-    gap:"nov_ny",
-    correct:"i",
-    sentences:[
-      "Ráno prišli noviny.",
-      "Dedko číta noviny.",
-      "Noviny ležali na stole."
-    ]
-  },
-
-  {
-    id:"lipa",
-    word:"lipa",
-    wrong:"lypa",
-    gap:"l_pa",
-    correct:"i",
-    sentences:[
-      "Pred domom rastie lipa.",
-      "Lipa krásne kvitne.",
-      "Pod lipou sme oddychovali."
-    ]
-  },
-
-  {
-    id:"list",
-    word:"list",
-    wrong:"lyst",
-    gap:"l_st",
-    correct:"i",
-    sentences:[
-      "Zo stromu spadol list.",
-      "Na zemi ležal žltý list.",
-      "Vietor odniesol suchý list."
-    ]
-  },
-
-  {
-    id:"malina",
-    word:"malina",
-    wrong:"malyna",
-    gap:"mal_na",
-    correct:"i",
-    sentences:[
-      "Na kríku dozrela malina.",
-      "Malina bola sladká.",
-      "Do misky som dal malinu."
-    ]
-  },
-
-  {
-    id:"dolina",
-    word:"dolina",
-    wrong:"dolyna",
-    gap:"dol_na",
-    correct:"i",
-    sentences:[
-      "Pod nami sa rozprestierala dolina.",
-      "Dolina bola zahalená hmlou.",
-      "Cesta viedla cez dolinu."
-    ]
-  },
-
-  {
-    id:"hybat",
-    word:"hýbať",
-    wrong:"híbať",
-    gap:"h_bať",
-    correct:"ý",
-    sentences:[
-      "Začal hýbať rukou.",
-      "Strom sa vo vetre začal hýbať.",
-      "S ťažkou skriňou sa nedalo hýbať."
-    ]
-  },
-
-  {
-    id:"pohyb",
-    word:"pohyb",
-    wrong:"pohib",
-    gap:"poh_b",
-    correct:"y",
-    sentences:[
-      "Pohyb je pre telo dôležitý.",
-      "Zbadal som pohyb v tráve.",
-      "Pravidelný pohyb prospieva zdraviu."
-    ]
-  },
-
-  {
-    id:"hynut",
-    word:"hynúť",
-    wrong:"hinúť",
-    gap:"h_núť",
-    correct:"y",
-    sentences:[
-      "Bez vody môžu rastliny hynúť.",
-      "Ryby začali v znečistenej vode hynúť.",
-      "Živočíchy nesmú zbytočne hynúť."
-    ]
-  },
-
-  {
-    id:"hydina",
-    word:"hydina",
-    wrong:"hidina",
-    gap:"h_dina",
-    correct:"y",
-    sentences:[
-      "Na dvore behala hydina.",
-      "Farmár chová hydinu.",
-      "Hydina dostala čerstvé krmivo."
-    ]
-  },
-
-  {
-    id:"hyena",
-    word:"hyena",
-    wrong:"hiena",
-    gap:"h_ena",
-    correct:"y",
-    sentences:[
-      "Hyena žije v Afrike.",
-      "V dokumente ukázali hyenu.",
-      "Hyena má silné čeľuste."
-    ]
-  },
-
-  {
-    id:"chyba",
-    word:"chyba",
-    wrong:"chiba",
-    gap:"ch_ba",
-    correct:"y",
-    sentences:[
-      "V texte bola chyba.",
-      "Každá chyba sa dá opraviť.",
-      "Našli sme chybu vo vete."
-    ]
-  },
-
-  {
-    id:"chybny",
-    word:"chybný",
-    wrong:"chibný",
-    gap:"ch_bný",
-    correct:"y",
-    sentences:[
-      "Výsledok bol chybný.",
-      "Opravil chybný údaj.",
-      "Chybný zápis sme preškrtli."
-    ]
-  },
-
-  {
-    id:"chytat",
-    word:"chytať",
-    wrong:"chitať",
-    gap:"ch_tať",
-    correct:"y",
-    sentences:[
-      "Deti začali chytať loptu.",
-      "Mačka sa pokúsila chytať muchy.",
-      "Na dvore sa učili chytať loptu."
-    ]
-  },
-
-  {
-    id:"chytit",
-    word:"chytiť",
-    wrong:"chitiť",
-    gap:"ch_tiť",
-    correct:"y",
-    sentences:[
-      "Skús chytiť loptu.",
-      "Podarilo sa mu chytiť motýľa.",
-      "Musel rýchlo chytiť padajúci pohár."
-    ]
-  },
-
-  {
-    id:"chybat",
-    word:"chýbať",
-    wrong:"chíbať",
-    gap:"ch_bať",
-    correct:"ý",
-    sentences:[
-      "Dnes nebude nikto chýbať.",
-      "V skladačke môže chýbať dielik.",
-      "Na výlete nám bude chýbať domov."
-    ]
-  },
-
-  {
-    id:"chystat",
-    word:"chystať",
-    wrong:"chistať",
-    gap:"ch_stať",
-    correct:"y",
-    sentences:[
-      "Začali sme chystať desiatu.",
-      "Mama išla chystať večeru.",
-      "Deti pomáhali chystať výzdobu."
-    ]
-  },
-
-  {
-    id:"kyvadlo",
-    word:"kyvadlo",
-    wrong:"kivadlo",
-    gap:"k_vadlo",
-    correct:"y",
-    sentences:[
-      "Hodiny majú kyvadlo.",
-      "Kyvadlo sa pohybovalo zo strany na stranu.",
-      "Staré kyvadlo sa zastavilo."
-    ]
-  },
-
-  {
-    id:"kytica",
-    word:"kytica",
-    wrong:"kitica",
-    gap:"k_tica",
-    correct:"y",
-    sentences:[
-      "Na stole bola kytica kvetov.",
-      "Dostala krásnu kyticu.",
-      "Kytica voňala po ružiach."
-    ]
-  },
-
-  {
-    id:"kysly",
-    word:"kyslý",
-    wrong:"kislý",
-    gap:"k_slý",
-    correct:"y",
-    sentences:[
-      "Citrón je kyslý.",
-      "Jogurt mal kyslú chuť.",
-      "Ochutnal kyslý cukrík."
-    ]
-  },
-
-  {
-    id:"kysnut",
-    word:"kysnúť",
-    wrong:"kisnúť",
-    gap:"k_snúť",
-    correct:"y",
-    sentences:[
-      "Cesto necháme kysnúť.",
-      "Na teplom mieste začne cesto kysnúť.",
-      "Kvások pomáha cestu kysnúť."
-    ]
-  },
-
-  {
-    id:"kyvat",
-    word:"kývať",
-    wrong:"kívať",
-    gap:"k_vať",
-    correct:"ý",
-    sentences:[
-      "Začal kývať rukou.",
-      "Deti nám pri odchode kývali.",
-      "Z diaľky bolo vidieť kývať zástavou."
-    ]
-  },
-
-  {
-    id:"kychat",
-    word:"kýchať",
-    wrong:"kíchať",
-    gap:"k_chať",
-    correct:"ý",
-    sentences:[
-      "Od prachu začal kýchať.",
-      "Na jar môže často kýchať.",
-      "Peľ ho prinútil kýchať."
-    ]
-  },
-
-  {
-    id:"dych",
-    word:"dych",
-    wrong:"dich",
-    gap:"d_ch",
-    correct:"y",
-    sentences:[
-      "Po behu sa mu zrýchlil dych.",
-      "Na chvíľu zadržal dych.",
-      "Studený vzduch mu vzal dych."
-    ]
-  },
-
-  {
-    id:"dychat",
-    word:"dýchať",
-    wrong:"díchať",
-    gap:"d_chať",
-    correct:"ý",
-    sentences:[
-      "Pri cvičení treba správne dýchať.",
-      "Skús pokojne dýchať.",
-      "Pod vodou nemôžeme dýchať."
-    ]
-  },
-
-  {
-    id:"oddych",
-    word:"oddych",
-    wrong:"oddich",
-    gap:"odd_ch",
-    correct:"y",
-    sentences:[
-      "Po práci si doprial oddych.",
-      "Krátky oddych nám pomohol.",
-      "Po výlete potrebujeme oddych."
-    ]
-  },
-
-  {
-    id:"dym",
-    word:"dym",
-    wrong:"dim",
-    gap:"d_m",
-    correct:"y",
-    sentences:[
-      "Z komína stúpal dym.",
-      "Dym sa rozplynul vo vzduchu.",
-      "Čierny dym bolo vidieť zďaleka."
-    ]
-  },
-
-  {
-    id:"dyka",
-    word:"dýka",
-    wrong:"díka",
-    gap:"d_ka",
-    correct:"ý",
-    sentences:[
-      "V múzeu bola vystavená stará dýka.",
-      "Dýka mala ozdobnú rukoväť.",
-      "Historická dýka bola za sklom."
-    ]
-  },
-
-  {
-    id:"tyc",
-    word:"tyč",
-    wrong:"tič",
-    gap:"t_č",
-    correct:"y",
-    sentences:[
-      "Na zemi ležala kovová tyč.",
-      "Tyč bola veľmi dlhá.",
-      "Robotník zdvihol tyč."
-    ]
-  },
-
-  {
-    id:"tycka",
-    word:"tyčka",
-    wrong:"tička",
-    gap:"t_čka",
-    correct:"y",
-    sentences:[
-      "V zemi bola zapichnutá tyčka.",
-      "Malá tyčka podopierala rastlinu.",
-      "Na stole ležala drevená tyčka."
-    ]
-  },
-
-  {
-    id:"tykadlo",
-    word:"tykadlo",
-    wrong:"tikadlo",
-    gap:"t_kadlo",
-    correct:"y",
-    sentences:[
-      "Motýľ má jemné tykadlo.",
-      "Chrobák pohol tykadlom.",
-      "Na obrázku sme označili tykadlo."
-    ]
-  },
-
-  {
-    id:"motyka",
-    word:"motyka",
-    wrong:"motika",
-    gap:"mot_ka",
-    correct:"y",
-    sentences:[
-      "V záhrade zostala motyka.",
-      "Dedko pracoval s motykou.",
-      "Motyka bola opretá o plot."
-    ]
-  },
-
-  {
-    id:"tyzden",
-    word:"týždeň",
-    wrong:"tíždeň",
-    gap:"t_ždeň",
-    correct:"ý",
-    sentences:[
-      "Tento týždeň máme prázdniny.",
-      "Týždeň má sedem dní.",
-      "Na výlet pôjdeme o týždeň."
-    ]
-  },
-
-  {
-    id:"dotyk",
-    word:"dotyk",
-    wrong:"dotik",
-    gap:"dot_k",
-    correct:"y",
-    sentences:[
-      "Jemný dotyk ho zobudil.",
-      "Displej reaguje na dotyk.",
-      "Dotyk ruky bol teplý."
-    ]
-  },
-
-  {
-    id:"lyko",
-    word:"lyko",
-    wrong:"liko",
-    gap:"l_ko",
-    correct:"y",
-    sentences:[
-      "Pod kôrou stromu je lyko.",
-      "Lyko je časť rastliny.",
-      "Na prírodovede sme pozorovali lyko."
-    ]
-  },
-
-  {
-    id:"lysina",
-    word:"lysina",
-    wrong:"lisina",
-    gap:"l_sina",
-    correct:"y",
-    sentences:[
-      "Na kopci bola malá lysina.",
-      "V lese vznikla lysina.",
-      "Z diaľky bolo vidieť lysinu."
-    ]
-  },
-
-  {
-    id:"lytko",
-    word:"lýtko",
-    wrong:"lítko",
-    gap:"l_tko",
-    correct:"ý",
-    sentences:[
-      "Po behu ma bolelo lýtko.",
-      "Športovec si natiahol lýtko.",
-      "Precvičil si pravé lýtko."
-    ]
-  },
-
-  {
-    id:"lyze",
-    word:"lyže",
-    wrong:"liže",
-    gap:"l_že",
-    correct:"y",
-    sentences:[
-      "V pivnici máme lyže.",
-      "Deti si pripravili lyže.",
-      "Nové lyže boli ľahké."
-    ]
-  },
-
-  {
-    id:"lyzica",
-    word:"lyžica",
-    wrong:"ližica",
-    gap:"l_žica",
-    correct:"y",
-    sentences:[
-      "Na stole ležala lyžica.",
-      "Polievku jedol lyžicou.",
-      "Lyžica spadla na zem."
-    ]
-  },
-
-  {
-    id:"mlyn",
-    word:"mlyn",
-    wrong:"mlin",
-    gap:"ml_n",
-    correct:"y",
-    sentences:[
-      "Pri potoku stál starý mlyn.",
-      "Mlyn kedysi mlel obilie.",
-      "Navštívili sme vodný mlyn."
-    ]
-  },
-
-  {
-    id:"mlyncek",
-    word:"mlynček",
-    wrong:"mlinček",
-    gap:"ml_nček",
-    correct:"y",
-    sentences:[
-      "Kávu zomlel mlynček.",
-      "Na stole bol malý mlynček.",
-      "Mlynček sa prestal točiť."
-    ]
-  },
-
-  {
-    id:"plyn",
-    word:"plyn",
-    wrong:"plin",
-    gap:"pl_n",
-    correct:"y",
-    sentences:[
-      "Plyn môže byť neviditeľný.",
-      "V kuchyni používajú plyn.",
-      "Technik skontroloval plyn."
-    ]
-  },
-
-  {
-    id:"plys",
-    word:"plyš",
-    wrong:"pliš",
-    gap:"pl_š",
-    correct:"y",
-    sentences:[
-      "Hračka bola vyrobená z plyšu.",
-      "Mäkký plyš bol príjemný na dotyk.",
-      "Na kresle bol modrý plyš."
-    ]
-  },
-
-  {
-    id:"plytky",
-    word:"plytký",
-    wrong:"plitký",
-    gap:"pl_tký",
-    correct:"y",
-    sentences:[
-      "Potok bol veľmi plytký.",
-      "Tanier je plytký.",
-      "Pri brehu je rybník plytký."
-    ]
-  },
-
-  {
-    id:"plytcina",
-    word:"plytčina",
-    wrong:"plitčina",
-    gap:"pl_tčina",
-    correct:"y",
-    sentences:[
-      "Deti sa hrali na plytčine.",
-      "Čln uviazol na plytčine.",
-      "Na plytčine bola teplá voda."
-    ]
-  }
-
-];
-  /* =====================================================
-   KONTROLA DATABÁZY
-   ===================================================== */
-
-const forbiddenWords = new Set([
-  "činel",
-  "žiaci",
-  "svietiť",
-  "variť",
-  "hasiť",
-  "taniere"
-]);
-
-const forbiddenDiphthongs = [
-  "ia",
-  "ie",
-  "iu",
-  "ô"
-];
-
-function isSafeDatabaseItem(item){
-
-  const word =
-    item.word.toLocaleLowerCase("sk");
-
-  if(forbiddenWords.has(word)){
-    return false;
-  }
-
-  if(
-    forbiddenDiphthongs.some(
-      diphthong =>
-        word.includes(diphthong)
-    )
-  ){
-    return false;
-  }
-
-  return true;
-}
-
-
-/*
-  Ak sa neskôr omylom pridá nevhodné slovo,
-  aplikácia ho automaticky vyradí.
-*/
-
-for(
-  let i = database.length - 1;
-  i >= 0;
-  i--
-){
-
-  if(
-    !isSafeDatabaseItem(database[i])
-  ){
-
-    console.warn(
-      "DámTo!: vyradené slovo:",
-      database[i].word
-    );
-
-    database.splice(i,1);
-
-  }
-
-}
-
-
-/* =====================================================
-   PREMENNÉ
-   ===================================================== */
-
-let selectedLevel = 1;
-let questions = [];
-let current = 0;
-let score = 0;
-let locked = false;
-let usedSentences = new Set();
-
-
-/* =====================================================
-   POMOCNÉ FUNKCIE
-   ===================================================== */
-
-function shuffle(array){
-
-  const copy = [...array];
-
-  for(
-    let i = copy.length - 1;
-    i > 0;
-    i--
-  ){
-
-    const j =
-      Math.floor(
-        Math.random() * (i + 1)
-      );
-
-    [
-      copy[i],
-      copy[j]
-    ] = [
-      copy[j],
-      copy[i]
-    ];
-
-  }
-
-  return copy;
-}
-
-
-function normalizeText(text){
-
-  return String(text)
-    .trim()
-    .replace(/\s+/g," ")
-    .toLocaleLowerCase("sk");
-
-}
-
-
-/*
-  Nájde písmeno,
-  v ktorom sa správne a chybné
-  slovo líšia.
-*/
-
-function getDifference(item){
-
-  const good = item.word;
-  const bad = item.wrong;
-
-  const length =
-    Math.min(
-      good.length,
-      bad.length
-    );
-
-  for(
-    let i = 0;
-    i < length;
-    i++
-  ){
-
-    if(
-      good[i]
-        .toLocaleLowerCase("sk")
-      !==
-      bad[i]
-        .toLocaleLowerCase("sk")
-    ){
-
-      return {
-        index:i,
-        correctChar:good[i],
-        wrongChar:bad[i]
-      };
-
-    }
-
-  }
-
-  return null;
-}
-
-
-/* =====================================================
-   TVORBA CHYBNEJ VETY
-   ===================================================== */
-
-function makeWrongSentence(
-  sentence,
-  item
-){
-
-  const difference =
-    getDifference(item);
-
-  if(!difference){
-    return null;
-  }
-
-  const index =
-    difference.index;
-
-  const lowerSentence =
-    sentence.toLocaleLowerCase("sk");
-
-  /*
-    Skúsime nájsť začiatok slova
-    vo vete aj vtedy,
-    keď je slovo v inom páde.
-  */
-
-  let anchorLength =
-    Math.min(
-      item.word.length,
-      index + 3
-    );
-
-  let position = -1;
-
-  while(
-    anchorLength > index
-    &&
-    position === -1
-  ){
-
-    const anchor =
-      item.word
-        .slice(0,anchorLength)
-        .toLocaleLowerCase("sk");
-
-    position =
-      lowerSentence
-        .indexOf(anchor);
-
-    anchorLength--;
-
-  }
-
-  if(position === -1){
-    return null;
-  }
-
-  const letterPosition =
-    position + index;
-
-  const originalLetter =
-    sentence[letterPosition];
-
-  let replacement =
-    difference.wrongChar;
-
-  /*
-    Ak je písmeno veľké,
-    zachováme veľkosť.
-  */
-
-  if(
-    originalLetter
-    ===
-    originalLetter
-      .toLocaleUpperCase("sk")
-  ){
-
-    replacement =
-      replacement
-        .toLocaleUpperCase("sk");
-
-  }
-
-  const result =
-    sentence.slice(
-      0,
-      letterPosition
-    )
-    +
-    replacement
-    +
-    sentence.slice(
-      letterPosition + 1
-    );
-
-  /*
-    Dve rovnaké vety
-    nikdy nepovolíme.
-  */
-
-  if(
-    normalizeText(result)
-    ===
-    normalizeText(sentence)
-  ){
-    return null;
-  }
-
-  return result;
-}
-
-
-/* =====================================================
-   UNIKÁTNE VETY
-   ===================================================== */
-
-function getUniqueSentence(item){
-
-  const candidates =
-    shuffle(item.sentences);
-
-  for(
-    const sentence
-    of candidates
-  ){
-
-    const key =
-      normalizeText(sentence);
-
-    if(
-      usedSentences.has(key)
-    ){
-      continue;
-    }
-
-    const bad =
-      makeWrongSentence(
-        sentence,
-        item
-      );
-
-    if(!bad){
-      continue;
-    }
-
-    if(
-      normalizeText(sentence)
-      ===
-      normalizeText(bad)
-    ){
-      continue;
-    }
-
-    usedSentences.add(key);
-
-    return {
-      good:sentence,
-      bad:bad
-    };
-
-  }
-
-  return null;
-}
-
-
-/* =====================================================
-   OBRAZOVKY
-   ===================================================== */
-
-function show(section){
-
-  [
-    "home",
-    "game",
-    "finish"
-  ]
-  .forEach(id => {
-
-    document
-      .getElementById(id)
-      .classList
-      .add("hidden");
-
-  });
-
-  document
-    .getElementById(section)
-    .classList
-    .remove("hidden");
-
-}
-
-
-function chooseLevel(
-  level,
-  button
-){
-
-  selectedLevel = level;
-
-  document
-    .querySelectorAll(".level")
-    .forEach(item => {
-
-      item
-        .classList
-        .remove("active");
-
-    });
-
-  button
-    .classList
-    .add("active");
-
-}
-
-
-/* =====================================================
-   ULOŽENÉ CHYBY
-   ===================================================== */
-
-function getMistakes(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        "damtoMistakes"
-      )
-      ||
-      "{}"
-    );
-
-  }
-  catch(error){
-
-    return {};
-
-  }
-
-}
-
-
-function saveMistakes(data){
-
-  localStorage.setItem(
-    "damtoMistakes",
-    JSON.stringify(data)
-  );
-
-  updateMistakeCounter();
-
-}
-
-
-function registerMistake(id){
-
-  const data =
-    getMistakes();
-
-  data[id] =
-    (data[id] || 0) + 1;
-
-  saveMistakes(data);
-
-}
-
-
-function registerCorrect(id){
-
-  const data =
-    getMistakes();
-
-  if(data[id]){
-
-    data[id]--;
-
-    if(
-      data[id] <= 0
-    ){
-      delete data[id];
-    }
-
-    saveMistakes(data);
-
-  }
-
-}
-
-
-function updateMistakeCounter(){
-
-  const total =
-    Object.keys(
-      getMistakes()
-    ).length;
-
-  document
-    .getElementById(
-      "mistakeCount"
-    )
-    .textContent =
-      total
-        ? " (" + total + ")"
-        : "";
-
-}
-
-
-/* =====================================================
-   TVORBA TRÉNINGU
-   ===================================================== */
-
-function buildNormalDeck(){
-
-  const mistakes =
-    getMistakes();
-
-  /*
-    Rozdelenie databázy:
-
-    soft = i / í
-    hard = y / ý
-  */
-
-  const soft =
-    database.filter(
-      item =>
-        item.correct === "i"
-        ||
-        item.correct === "í"
-    );
-
-  const hard =
-    database.filter(
-      item =>
-        item.correct === "y"
-        ||
-        item.correct === "ý"
-    );
-
-  /*
-    Chybné slová majú prednosť,
-    ale stále zachováme pomer
-    5 i/í + 5 y/ý.
-  */
-
-  const softMistakes =
-    shuffle(
-      soft.filter(
-        item =>
-          mistakes[item.id]
-      )
-    );
-
-  const hardMistakes =
-    shuffle(
-      hard.filter(
-        item =>
-          mistakes[item.id]
-      )
-    );
-
-  const softOthers =
-    shuffle(
-      soft.filter(
-        item =>
-          !mistakes[item.id]
-      )
-    );
-
-  const hardOthers =
-    shuffle(
-      hard.filter(
-        item =>
-          !mistakes[item.id]
-      )
-    );
-
-  const softPool = [
-    ...softMistakes,
-    ...softOthers
-  ];
-
-  const hardPool = [
-    ...hardMistakes,
-    ...hardOthers
-  ];
-
-  const selectedSoft =
-    softPool.slice(0,5);
-
-  const selectedHard =
-    hardPool.slice(0,5);
-
-  return shuffle([
-    ...selectedSoft,
-    ...selectedHard
-  ]);
-
-}
-
-
-/* =====================================================
-   ZAČIATOK TRÉNINGU
-   ===================================================== */
-
-function startTraining(){
-
-  usedSentences =
-    new Set();
-
-  questions =
-    buildNormalDeck();
-
-  current = 0;
-  score = 0;
-  locked = false;
-
-  show("game");
-
-  renderQuestion();
-
-}
-
-
-/* =====================================================
-   PRECVIČOVANIE CHÝB
-   ===================================================== */
-
-function startMistakes(){
-
-  const stored =
-    getMistakes();
-
-  const wrongWords =
-    database.filter(
-      item =>
-        stored[item.id]
-    );
-
-  if(
-    wrongWords.length === 0
-  ){
-
-    alert(
-      "Zatiaľ nemáš uložené žiadne chyby. 🎉"
-    );
-
-    return;
-
-  }
-
-  usedSentences =
-    new Set();
-
-  questions =
-    shuffle(
-      wrongWords
-    )
-    .slice(0,10);
-
-  current = 0;
-  score = 0;
-  locked = false;
-
-  show("game");
-
-  renderQuestion();
-
-}
-
-
-function goHome(){
-
-  updateMistakeCounter();
-
-  show("home");
-
-}
-
-
-/* =====================================================
-   ZOBRAZENIE OTÁZKY
-   ===================================================== */
-
-function renderQuestion(){
-
-  locked = false;
-
-  const item =
-    questions[current];
-
-  if(!item){
-
-    finishTraining();
-
-    return;
-
-  }
-
-  document
-    .getElementById(
-      "counter"
-    )
-    .textContent =
-      (current + 1)
-      +
-      " / "
-      +
-      questions.length;
-
-  document
-    .getElementById(
-      "points"
-    )
-    .textContent =
-      score;
-
-  document
-    .getElementById(
-      "progressBar"
-    )
-    .style.width =
-      (
-        current
-        /
-        questions.length
-        *
-        100
-      )
-      +
-      "%";
-
-  document
-    .getElementById(
-      "levelBadge"
-    )
-    .textContent =
-      {
-        1:"⭐ Skúšam",
-        2:"⭐⭐ Už mi to ide",
-        3:"⭐⭐⭐ DámTo!"
-      }[selectedLevel];
-
-  const feedback =
-    document
-      .getElementById(
-        "feedback"
-      );
-
-  feedback.className = "";
-  feedback.innerHTML = "";
-
-  document
-    .getElementById(
-      "nextButton"
-    )
-    .classList
-    .add("hidden");
-
-
-  /* =========================
-     LEVEL 1
-     ========================= */
-
-  if(
-    selectedLevel === 1
-  ){
-
-    document
-      .getElementById(
-        "instruction"
-      )
-      .textContent =
-        "✏️ Doplň správne písmeno";
-
-    document
-      .getElementById(
-        "question"
-      )
-      .textContent =
-        item.gap;
-
-    let wrongLetter;
-
-    if(
-      item.correct === "i"
-    ){
-      wrongLetter = "y";
-    }
-    else if(
-      item.correct === "í"
-    ){
-      wrongLetter = "ý";
-    }
-    else if(
-      item.correct === "y"
-    ){
-      wrongLetter = "i";
-    }
-    else{
-      wrongLetter = "í";
-    }
-
-    createAnswers(
-      [
-        item.correct,
-        wrongLetter
-      ],
-      item.correct
-    );
-
-    return;
-
-  }
-
-
-  /* =========================
-     LEVEL 2
-     ========================= */
-
-  if(
-    selectedLevel === 2
-  ){
-
-    document
-      .getElementById(
-        "instruction"
-      )
-      .textContent =
-        "🧩 Vyber správne napísané slovo";
-
-    document
-      .getElementById(
-        "question"
-      )
-      .textContent =
-        "Ktoré slovo je správne?";
-
-    createAnswers(
-      [
-        item.word,
-        item.wrong
-      ],
-      item.word
-    );
-
-    return;
-
-  }
-
-
-  /* =========================
-     LEVEL 3
-     ========================= */
-
-  if(
-    selectedLevel === 3
-  ){
-
-    document
-      .getElementById(
-        "instruction"
-      )
-      .textContent =
-        "🔎 Lovec chýb";
-
-    document
-      .getElementById(
-        "question"
-      )
-      .textContent =
-        "Ktorá veta je napísaná správne?";
-
-    const pair =
-      getUniqueSentence(item);
-
-    /*
-      Ak sa z nejakej vety
-      nedá bezpečne vytvoriť
-      chybná verzia,
-      úloha sa preskočí.
-    */
-
-    if(!pair){
-
-      current++;
-
-      if(
-        current
-        >=
-        questions.length
-      ){
-
-        finishTraining();
-
-      }
-      else{
-
-        renderQuestion();
-
-      }
-
-      return;
-
-    }
-
-    createAnswers(
-      [
-        pair.good,
-        pair.bad
-      ],
-      pair.good
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   ODPOVEDE
-   ===================================================== */
-
-function createAnswers(
-  options,
-  correct
-){
-
-  const container =
-    document
-      .getElementById(
-        "answers"
-      );
-
-  container.innerHTML = "";
-
-  /*
-    Odstránime prípadné
-    rovnaké možnosti.
-  */
-
-  const unique = [];
-
-  for(
-    const option
-    of options
-  ){
-
-    const alreadyExists =
-      unique.some(
-        existing =>
-          normalizeText(existing)
-          ===
-          normalizeText(option)
-      );
-
-    if(!alreadyExists){
-      unique.push(option);
-    }
-
-  }
-
-  /*
-    Ak nemáme dve rozdielne
-    odpovede, otázku preskočíme.
-  */
-
-  if(
-    unique.length < 2
-  ){
-
-    current++;
-
-    if(
-      current
-      >=
-      questions.length
-    ){
-
-      finishTraining();
-
-    }
-    else{
-
-      renderQuestion();
-
-    }
-
-    return;
-
-  }
-
-  shuffle(unique)
-    .forEach(option => {
-
-      const button =
-        document
-          .createElement(
-            "button"
-          );
-
-      button.className =
-        "answer";
-
-      button.textContent =
-        option;
-
-      button.onclick =
-        () => {
-
-          checkAnswer(
-            normalizeText(option)
-            ===
-            normalizeText(correct)
-          );
-
-        };
-
-      container
-        .appendChild(button);
-
-    });
-
-}
-
-
-/* =====================================================
-   KONTROLA ODPOVEDE
-   ===================================================== */
-
-function checkAnswer(correct){
-
-  if(locked){
-    return;
-  }
-
-  locked = true;
-
-  const item =
-    questions[current];
-
-  const feedback =
-    document
-      .getElementById(
-        "feedback"
-      );
-
-
-  if(correct){
-
-    score++;
-
-    registerCorrect(
-      item.id
-    );
-
-    feedback.className =
-      "feedback good";
-
-    feedback.innerHTML =
-      "🎉 <b>Výborne!</b> Správna odpoveď.";
-
-  }
-  else{
-
-    registerMistake(
-      item.id
-    );
-
-    feedback.className =
-      "feedback bad";
-
-    feedback.innerHTML =
-      "💡 <b>Ešte nie.</b> Správne je <b>"
-      +
-      item.word
-      +
-      "</b>.<br>"
-      +
-      "🎯 Túto chybu si DámTo! zapamätá.";
-
-  }
-
-  document
-    .getElementById(
-      "points"
-    )
-    .textContent =
-      score;
-
-  document
-    .querySelectorAll(
-      ".answer"
-    )
-    .forEach(
-      button => {
-        button.disabled = true;
-      }
-    );
-
-  document
-    .getElementById(
-      "nextButton"
-    )
-    .classList
-    .remove("hidden");
-
-}
-
-
-/* =====================================================
-   ĎALŠIA OTÁZKA
-   ===================================================== */
-
-function nextQuestion(){
-
-  current++;
-
-  if(
-    current
-    >=
-    questions.length
-  ){
-
-    finishTraining();
-
-    return;
-
-  }
-
-  renderQuestion();
-
-}
-
-
-/* =====================================================
-   KONIEC
-   ===================================================== */
-
-function finishTraining(){
-
-  document
-    .getElementById(
-      "progressBar"
-    )
-    .style.width =
-      "100%";
-
-  document
-    .getElementById(
-      "finalScore"
-    )
-    .textContent =
-      score
-      +
-      " / "
-      +
-      questions.length;
-
-  const percent =
-    questions.length
-    ?
-    score
-    /
-    questions.length
-    :
-    0;
-
-  let message = "";
-
-  if(
-    percent === 1
-  ){
-
-    message =
-      "Perfektné! Bez jedinej chyby. 🌟";
-
-  }
-  else if(
-    percent >= 0.8
-  ){
-
-    message =
-      "Výborne! Už ti to naozaj ide. 🚀";
-
-  }
-  else if(
-    percent >= 0.6
-  ){
-
-    message =
-      "Pekná práca. Ešte trochu tréningu. 💪";
-
-  }
-  else{
-
-    message =
-      "Nevadí. Každým pokusom sa zlepšuješ. 🌱";
-
-  }
-
-  document
-    .getElementById(
-      "finalMessage"
-    )
-    .textContent =
-      message;
-
-  updateMistakeCounter();
-
-  show("finish");
-
-}
-
-
-/* =====================================================
-   SPUSTENIE
-   ===================================================== */
-
-updateMistakeCounter();
-
-</script>
-
-</body>
-</html>
+const database=[
+
+{id:"siska",word:"šiška",wrong:"šyška",gap:"š_ška",correct:"i",
+sentences:["Pod stromom ležala šiška.","Veverička našla šišku.","Zo stromu spadla šiška."]},
+
+{id:"sikovny",word:"šikovný",wrong:"šykovný",gap:"š_kovný",correct:"i",
+sentences:["Miško je veľmi šikovný.","Šikovný žiak úlohu vyriešil.","Náš spolužiak je šikovný."]},
+
+{id:"sidlo",word:"šidlo",wrong:"šydlo",gap:"š_dlo",correct:"i",
+sentences:["Na stole ležalo šidlo.","Staré šidlo bolo ostré.","Remeselník odložil šidlo."]},
+
+{id:"sip",word:"šíp",wrong:"šýp",gap:"š_p",correct:"í",
+sentences:["Šíp trafil do terča.","Na zemi ležal šíp.","Lukostrelec vystrelil šíp."]},
+
+{id:"kosik",word:"košík",wrong:"košýk",gap:"koš_k",correct:"í",
+sentences:["Jablká sme dali do košíka.","Na stole stál košík.","Priniesla plný košík."]},
+
+{id:"zirafa",word:"žirafa",wrong:"žyrafa",gap:"ž_rafa",correct:"i",
+sentences:["Žirafa má dlhý krk.","V zoo sme pozorovali žirafu.","Žirafa jedla listy."]},
+
+{id:"zivot",word:"život",wrong:"žyvot",gap:"ž_vot",correct:"i",
+sentences:["Život v lese je pestrý.","Voda je potrebná pre život.","Rozprával príbeh zo života."]},
+
+{id:"zito",word:"žito",wrong:"žyto",gap:"ž_to",correct:"i",
+sentences:["Na poli dozrieva žito.","Žito sa vlnilo vo vetre.","Farmár zasial žito."]},
+
+{id:"cinka",word:"činka",wrong:"čynka",gap:"č_nka",correct:"i",
+sentences:["Na podlahe ležala činka.","Športovec zdvihol činku.","Malá činka bola ľahká."]},
+
+{id:"cisty",word:"čistý",wrong:"čystý",gap:"č_stý",correct:"i",
+sentences:["Pohár je čistý.","Obliekol si čistý sveter.","Vzduch v lese bol čistý."]},
+
+{id:"cibula",word:"cibuľa",wrong:"cybuľa",gap:"c_buľa",correct:"i",
+sentences:["Mama nakrájala cibuľu.","Na stole ležala cibuľa.","Cibuľa má výraznú vôňu."]},
+
+{id:"citron",word:"citrón",wrong:"cytrón",gap:"c_trón",correct:"i",
+sentences:["Do čaju som dal citrón.","Citrón chutí kyslo.","Na stole bol citrón."]},
+
+{id:"divadlo",word:"divadlo",wrong:"dyvadlo",gap:"d_vadlo",correct:"i",
+sentences:["Pôjdeme do divadla.","Divadlo uviedlo rozprávku.","Pred divadlom čakali deti."]},
+
+{id:"dedina",word:"dedina",wrong:"dedyna",gap:"ded_na",correct:"i",
+sentences:["Naša dedina leží pri lese.","Dedina bola večer tichá.","Cez dedinu vedie cesta."]},
+
+{id:"hodina",word:"hodina",wrong:"hodyna",gap:"hod_na",correct:"i",
+sentences:["Hodina sa začala načas.","Jedna hodina rýchlo ubehla.","Čaká nás hodina slovenčiny."]},
+
+{id:"ticho",word:"ticho",wrong:"tycho",gap:"t_cho",correct:"i",
+sentences:["V triede bolo ticho.","V lese zavládlo ticho.","Prosím, buď ticho."]},
+
+{id:"tisic",word:"tisíc",wrong:"tysíc",gap:"t_síc",correct:"i",
+sentences:["Tisíc je veľké číslo.","Prišlo tisíc ľudí.","Kniha má tisíc strán."]},
+
+{id:"nitka",word:"nitka",wrong:"nytka",gap:"n_tka",correct:"i",
+sentences:["Na stole ležala nitka.","Nitka sa pretrhla.","Navliekla nitku do ihly."]},
+
+{id:"nikto",word:"nikto",wrong:"nykto",gap:"n_kto",correct:"i",
+sentences:["Nikto dnes nechýbal.","Nikto nepoznal odpoveď.","Nikto nechcel odísť."]},
+
+{id:"lipa",word:"lipa",wrong:"lypa",gap:"l_pa",correct:"i",
+sentences:["Pred domom rastie lipa.","Lipa krásne kvitne.","Pod lipou sme oddychovali."]},
+
+{id:"malina",word:"malina",wrong:"malyna",gap:"mal_na",correct:"i",
+sentences:["Na kríku dozrela malina.","Malina bola sladká.","Do misky som dal malinu."]},
+
+{id:"dolina",word:"dolina",wrong:"dolyna",gap:"dol_na",correct:"i",
+sentences:["Pod nami bola dolina.","Dolina bola zahalená hmlou.","Cesta viedla cez dolinu."]},
+
+
+{id:"hybat",word:"hýbať",wrong:"híbať",gap:"h_bať",correct:"ý",
+sentences:["Začal hýbať rukou.","Strom sa začal hýbať.","So skriňou sa nedalo hýbať."]},
+
+{id:"pohyb",word:"pohyb",wrong:"pohib",gap:"poh_b",correct:"y",
+sentences:["Pohyb je pre telo dôležitý.","Zbadal som pohyb v tráve.","Pravidelný pohyb prospieva zdraviu."]},
+
+{id:"hynut",word:"hynúť",wrong:"hinúť",gap:"h_núť",correct:"y",
+sentences:["Bez vody môžu rastliny hynúť.","Ryby začali hynúť.","Živočíchy nesmú hynúť."]},
+
+{id:"hydina",word:"hydina",wrong:"hidina",gap:"h_dina",correct:"y",
+sentences:["Na dvore behala hydina.","Farmár chová hydinu.","Hydina dostala krmivo."]},
+
+{id:"chyba",word:"chyba",wrong:"chiba",gap:"ch_ba",correct:"y",
+sentences:["V texte bola chyba.","Každá chyba sa dá opraviť.","Našli sme chybu vo vete."]},
+
+{id:"chybny",word:"chybný",wrong:"chibný",gap:"ch_bný",correct:"y",
+sentences:["Výsledok bol chybný.","Opravil chybný údaj.","Chybný zápis sme opravili."]},
+
+{id:"chytat",word:"chytať",wrong:"chitať",gap:"ch_tať",correct:"y",
+sentences:["Deti začali chytať loptu.","Mačka začala chytať muchy.","Učili sa chytať loptu."]},
+
+{id:"chytit",word:"chytiť",wrong:"chitiť",gap:"ch_tiť",correct:"y",
+sentences:["Skús chytiť loptu.","Podarilo sa mu chytiť motýľa.","Musel chytiť pohár."]},
+
+{id:"chystat",word:"chystať",wrong:"chistať",gap:"ch_stať",correct:"y",
+sentences:["Začali sme chystať desiatu.","Mama išla chystať večeru.","Deti pomáhali chystať výzdobu."]},
+
+{id:"kytica",word:"kytica",wrong:"kitica",gap:"k_tica",correct:"y",
+sentences:["Na stole bola kytica kvetov.","Dostala krásnu kyticu.","Kytica voňala."]},
+
+{id:"kysly",word:"kyslý",wrong:"kislý",gap:"k_slý",correct:"y",
+sentences:["Citrón je kyslý.","Nápoj bol kyslý.","Ochutnal kyslý cukrík."]},
+
+{id:"kysnut",word:"kysnúť",wrong:"kisnúť",gap:"k_snúť",correct:"y",
+sentences:["Cesto necháme kysnúť.","Cesto začalo kysnúť.","Kvások pomáha cestu kysnúť."]},
+
+{id:"kyvat",word:"kývať",wrong:"kívať",gap:"k_vať",correct:"ý",
+sentences:["Začal kývať rukou.","Deti nám kývali.","Bolo ho vidieť kývať rukou."]},
+
+{id:"dych",word:"dych",wrong:"dich",gap:"d_ch",correct:"y",
+sentences:["Po behu sa mu zrýchlil dych.","Zadržal dych.","Studený vzduch mu vzal dych."]},
+
+{id:"dychat",word:"dýchať",
